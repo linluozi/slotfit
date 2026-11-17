@@ -55,7 +55,7 @@ def main(argv: list[str] | None = None) -> int:
         print(
             f"  best single class: {best['name']} saves "
             f"{best['layout']['saved_bytes']:.1f} B/instance, "
-            f"{best['layout']['saved_mb'] if False else best['layout']['saved_bytes'] * args.instances / (1024 * 1024):.2f} MiB "
+            f"{best['layout']['saved_bytes'] * args.instances / (1024 * 1024):.2f} MiB "
             f"at {args.instances:,} live instances"
         )
     print()
