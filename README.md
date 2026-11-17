@@ -51,11 +51,14 @@ per-class rows: `corpus/report.json`.
 ## Install and run
 
 ```bash
-python3 -m pip install -e .
+python3 -m venv .venv
+. .venv/bin/activate
+pip install -e .
 slotfit path/to/package --instances 1000000 --top 20 --json report.json
 ```
 
-Without installing:
+Without installing (system Python is PEP 668 managed, so use this if you do not
+want a venv):
 
 ```bash
 PYTHONPATH=. python3 -m slotfit.cli /tmp/corpus --json corpus/report.json
