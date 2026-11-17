@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "slotfit"
+version = "0.1.0"
+description = "Find classes where __slots__ pays, with measured per-instance bytes"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+authors = [{name = "linluozi"}]
+dependencies = []
+
+[project.scripts]
+slotfit = "slotfit.cli:main"
+
+[tool.setuptools]
+packages = ["slotfit"]

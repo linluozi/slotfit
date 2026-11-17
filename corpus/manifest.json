@@ -1,0 +1,50 @@
+{
+  "note": "read-only corpus; repos only cloned, never modified",
+  "repos": [
+    {
+      "dir": "boltons",
+      "url": "git@github-linluozi:mahmoud/boltons.git",
+      "commit": "d31d821d56c8f7756af9c30a864077f2e5855321"
+    },
+    {
+      "dir": "cacheout-opt-lab",
+      "url": "git@github-linluozi:linluozi/cacheout-opt-lab.git",
+      "commit": "5483a8599c615d51c38006681817aef6bcdb1f4b"
+    },
+    {
+      "dir": "cachetools-lru-opt-lab",
+      "url": "git@github-linluozi:linluozi/cachetools-lru-opt-lab.git",
+      "commit": "2bf0c96689affc3bb74eb49bd838ce1d10e1b094"
+    },
+    {
+      "dir": "deepmerge",
+      "url": "git@github-linluozi:toumorokoshi/deepmerge.git",
+      "commit": "5be8369aa91213c67aa241e4fba7e5a41b29da22"
+    },
+    {
+      "dir": "emoji-opt-lab",
+      "url": "git@github-linluozi:linluozi/emoji-opt-lab.git",
+      "commit": "13a0f79d90b822780baf7d29d38d59fc27fd2072"
+    },
+    {
+      "dir": "jsonpatch-apply-opt-lab",
+      "url": "git@github-linluozi:linluozi/jsonpatch-apply-opt-lab.git",
+      "commit": "76d0f8a79da55a86aad5811a1a23c8398e0fb077"
+    },
+    {
+      "dir": "parse",
+      "url": "git@github-linluozi:r1chardj0n3s/parse.git",
+      "commit": "23ee37e87fced1d59d9e12d75cc6d934ed89b72e"
+    },
+    {
+      "dir": "voluptuous",
+      "url": "git@github-linluozi:alecthomas/voluptuous.git",
+      "commit": "92c6bafbfe1dbad2ad0f95a104e2c680bc440252"
+    },
+    {
+      "dir": "wcwidth-opt-lab",
+      "url": "git@github-linluozi:linluozi/wcwidth-opt-lab.git",
+      "commit": "5ed718eace92bbb1491ffc8cc816eef2f3569316"
+    }
+  ]
+}

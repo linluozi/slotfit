@@ -1,0 +1,6153 @@
+{
+  "tool": "slotfit",
+  "python": "3.12.3",
+  "instances": 1000000,
+  "counts": {
+    "safe": 50,
+    "review": 195,
+    "unsafe": 92,
+    "already-slotted": 22
+  },
+  "classes": [
+    {
+      "path": "/tmp/corpus/boltons/boltons/cacheutils.py",
+      "lineno": 95,
+      "name": "LRI",
+      "bases": [
+        "dict"
+      ],
+      "attrs": [
+        "_lock",
+        "hit_count",
+        "max_size",
+        "miss_count",
+        "on_miss",
+        "soft_miss_count"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "inherits from dict: base layout must be checked",
+        "_init_ll() assigns self._anchor outside __init__",
+        "_set_key_and_add_to_front_of_ll() assigns self._link_lookup outside __init__",
+        "_set_key_and_evict_last_in_ll() assigns self._anchor outside __init__",
+        "__getitem__() assigns self.hit_count outside __init__",
+        "get() assigns self.soft_miss_count outside __init__",
+        "setdefault() assigns self.soft_miss_count outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/cacheutils.py",
+      "lineno": 330,
+      "name": "LRU",
+      "bases": [
+        "LRI"
+      ],
+      "attrs": [],
+      "status": "unsafe",
+      "reasons": [
+        "inherits from LRI: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from",
+        "__getitem__() assigns self.hit_count outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/cacheutils.py",
+      "lineno": 382,
+      "name": "_HashedKey",
+      "bases": [
+        "list"
+      ],
+      "attrs": [],
+      "status": "already-slotted",
+      "reasons": [
+        "class already declares __slots__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/cacheutils.py",
+      "lineno": 439,
+      "name": "CachedFunction",
+      "bases": [],
+      "attrs": [
+        "func",
+        "get_cache",
+        "key_func",
+        "scoped",
+        "typed"
+      ],
+      "status": "safe",
+      "reasons": [],
+      "decorators": [],
+      "layout": {
+        "attrs": [
+          "func",
+          "get_cache",
+          "key_func",
+          "scoped",
+          "typed"
+        ],
+        "count": 20000,
+        "dict_instance_bytes": 320.65,
+        "slotted_instance_bytes": 72.65,
+        "saved_bytes": 248.0,
+        "saved_pct": 77.34
+      }
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/cacheutils.py",
+      "lineno": 478,
+      "name": "CachedMethod",
+      "bases": [],
+      "attrs": [
+        "__isabstractmethod__",
+        "bound_to",
+        "func",
+        "get_cache",
+        "key_func",
+        "scoped",
+        "typed"
+      ],
+      "status": "safe",
+      "reasons": [],
+      "decorators": [],
+      "layout": {
+        "attrs": [
+          "__isabstractmethod__",
+          "bound_to",
+          "func",
+          "get_cache",
+          "key_func",
+          "scoped",
+          "typed"
+        ],
+        "count": 20000,
+        "dict_instance_bytes": 320.65,
+        "slotted_instance_bytes": 88.65,
+        "saved_bytes": 232.0,
+        "saved_pct": 72.35
+      }
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/cacheutils.py",
+      "lineno": 615,
+      "name": "cachedproperty",
+      "bases": [],
+      "attrs": [
+        "__doc__",
+        "__isabstractmethod__",
+        "func"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "__get__() assigns self.func outside __init__",
+        "__get__(): touches instance/class __dict__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/cacheutils.py",
+      "lineno": 641,
+      "name": "ThresholdCounter",
+      "bases": [],
+      "attrs": [
+        "_count_map",
+        "_cur_bucket",
+        "_thresh_count",
+        "_threshold",
+        "total"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "add() assigns self._count_map outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/cacheutils.py",
+      "lineno": 816,
+      "name": "MinIDMap",
+      "bases": [],
+      "attrs": [
+        "free",
+        "mapping",
+        "ref_map"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "get() assigns self.mapping outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/cacheutils.py",
+      "lineno": 75,
+      "name": "RLock",
+      "bases": [],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/deprutils.py",
+      "lineno": 39,
+      "name": "DeprecatableModule",
+      "bases": [
+        "ModuleType"
+      ],
+      "attrs": [],
+      "status": "unsafe",
+      "reasons": [
+        "inherits from ModuleType: base layout must be checked",
+        "defines __getattribute__(), which requires dynamic attribute lookup",
+        "touches instance/class __dict__",
+        "touches instance/class __dict__",
+        "__init__ assigns no self attributes",
+        "__getattribute__() assigns self._deprecated_members outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/dictutils.py",
+      "lineno": 86,
+      "name": "OrderedMultiDict",
+      "bases": [
+        "dict"
+      ],
+      "attrs": [],
+      "status": "unsafe",
+      "reasons": [
+        "inherits from dict: base layout must be checked",
+        "__init__ accepts **kwargs",
+        "__init__ accepts *args",
+        "__init__ assigns no self attributes",
+        "_clear_ll() assigns self._map outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/dictutils.py",
+      "lineno": 661,
+      "name": "FastIterOrderedMultiDict",
+      "bases": [
+        "OrderedMultiDict"
+      ],
+      "attrs": [],
+      "status": "unsafe",
+      "reasons": [
+        "inherits from OrderedMultiDict: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from",
+        "_clear_ll() assigns self._map outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/dictutils.py",
+      "lineno": 763,
+      "name": "OneToOne",
+      "bases": [
+        "dict"
+      ],
+      "attrs": [],
+      "status": "already-slotted",
+      "reasons": [
+        "class already declares __slots__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/dictutils.py",
+      "lineno": 911,
+      "name": "ManyToMany",
+      "bases": [],
+      "attrs": [
+        "data",
+        "inv"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "update() assigns self.data outside __init__",
+        "add() assigns self.data outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/dictutils.py",
+      "lineno": 1066,
+      "name": "FrozenHashError",
+      "bases": [
+        "TypeError"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from TypeError: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/dictutils.py",
+      "lineno": 1070,
+      "name": "FrozenDict",
+      "bases": [
+        "dict"
+      ],
+      "attrs": [],
+      "status": "already-slotted",
+      "reasons": [
+        "class already declares __slots__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/excutils.py",
+      "lineno": 46,
+      "name": "ExceptionCauseMixin",
+      "bases": [
+        "Exception"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Exception: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/excutils.py",
+      "lineno": 170,
+      "name": "_TBItem",
+      "bases": [
+        "_BaseTBItem"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from _BaseTBItem: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/excutils.py",
+      "lineno": 177,
+      "name": "_DeferredLine",
+      "bases": [],
+      "attrs": [
+        "filename",
+        "lineno",
+        "module_globals"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "__str__() assigns self._line outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/excutils.py",
+      "lineno": 257,
+      "name": "MathError",
+      "bases": [
+        "ExceptionCauseMixin",
+        "ValueError"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from ExceptionCauseMixin: base layout must be checked",
+        "inherits from ValueError: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/fileutils.py",
+      "lineno": 71,
+      "name": "FilePerms",
+      "bases": [],
+      "attrs": [
+        "_group",
+        "_integer",
+        "_other",
+        "_user",
+        "group",
+        "other",
+        "user"
+      ],
+      "status": "safe",
+      "reasons": [],
+      "decorators": [],
+      "layout": {
+        "attrs": [
+          "_group",
+          "_integer",
+          "_other",
+          "_user",
+          "group",
+          "other",
+          "user"
+        ],
+        "count": 20000,
+        "dict_instance_bytes": 320.65,
+        "slotted_instance_bytes": 88.65,
+        "saved_bytes": 232.0,
+        "saved_pct": 72.35
+      }
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/fileutils.py",
+      "lineno": 336,
+      "name": "AtomicSaver",
+      "bases": [],
+      "attrs": [
+        "buffering",
+        "dest_dir",
+        "dest_path",
+        "file_perms",
+        "mode",
+        "open_flags",
+        "overwrite",
+        "overwrite_part",
+        "part_file",
+        "part_filename",
+        "part_path",
+        "rm_part_on_exc",
+        "text_mode"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "__init__ accepts **kwargs",
+        "_open_part_file() assigns self.part_file outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/fileutils.py",
+      "lineno": 618,
+      "name": "DummyFile",
+      "bases": [],
+      "attrs": [
+        "closed",
+        "encoding",
+        "errors",
+        "isatty",
+        "mode",
+        "name",
+        "newlines",
+        "softspace"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "close() assigns self.closed outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/fileutils.py",
+      "lineno": 113,
+      "name": "_FilePermProperty",
+      "bases": [],
+      "attrs": [
+        "attribute",
+        "offset"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "__set__(): calls setattr()"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/formatutils.py",
+      "lineno": 215,
+      "name": "BaseFormatField",
+      "bases": [],
+      "attrs": [],
+      "status": "unsafe",
+      "reasons": [
+        "__init__ assigns no self attributes",
+        "set_fname() assigns self.base_name outside __init__",
+        "set_fspec() assigns self.fspec outside __init__",
+        "set_conv() assigns self.conv outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/formatutils.py",
+      "lineno": 281,
+      "name": "DeferredValue",
+      "bases": [],
+      "attrs": [
+        "_value",
+        "cache_value",
+        "func"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "get_value() assigns self._value outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/funcutils.py",
+      "lineno": 238,
+      "name": "InstancePartial",
+      "bases": [
+        "functools.partial"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from functools.partial: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/funcutils.py",
+      "lineno": 268,
+      "name": "CachedInstancePartial",
+      "bases": [
+        "functools.partial"
+      ],
+      "attrs": [],
+      "status": "unsafe",
+      "reasons": [
+        "inherits from functools.partial: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from",
+        "__set_name__() assigns self.__name__ outside __init__",
+        "__get__() assigns self.__doc__ outside __init__",
+        "__get__(): touches instance/class __dict__",
+        "__get__(): touches instance/class __dict__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/funcutils.py",
+      "lineno": 675,
+      "name": "FunctionBuilder",
+      "bases": [],
+      "attrs": [
+        "name"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "calls setattr()",
+        "__init__ accepts **kw",
+        "__init__ calls setattr()",
+        "get_func(): touches instance/class __dict__",
+        "add_arg() assigns self.defaults outside __init__",
+        "remove_arg() assigns self.defaults outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/funcutils.py",
+      "lineno": 1018,
+      "name": "MissingArgument",
+      "bases": [
+        "ValueError"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from ValueError: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/funcutils.py",
+      "lineno": 1022,
+      "name": "ExistingArgument",
+      "bases": [
+        "ValueError"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from ValueError: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/gcutils.py",
+      "lineno": 144,
+      "name": "GCToggler",
+      "bases": [],
+      "attrs": [
+        "_was_enabled",
+        "postcollect"
+      ],
+      "status": "safe",
+      "reasons": [],
+      "decorators": [],
+      "layout": {
+        "attrs": [
+          "_was_enabled",
+          "postcollect"
+        ],
+        "count": 20000,
+        "dict_instance_bytes": 320.65,
+        "slotted_instance_bytes": 48.65,
+        "saved_bytes": 272.0,
+        "saved_pct": 84.83
+      }
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/ioutils.py",
+      "lineno": 61,
+      "name": "SpooledIOBase",
+      "bases": [
+        "IOBase"
+      ],
+      "attrs": [
+        "_dir",
+        "_max_size"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "inherits from IOBase: base layout must be checked",
+        "_set_softspace() assigns self.buffer outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/ioutils.py",
+      "lineno": 281,
+      "name": "SpooledBytesIO",
+      "bases": [
+        "SpooledIOBase"
+      ],
+      "attrs": [],
+      "status": "unsafe",
+      "reasons": [
+        "inherits from SpooledIOBase: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from",
+        "rollover() assigns self._buffer outside __init__",
+        "buffer() assigns self._buffer outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/ioutils.py",
+      "lineno": 363,
+      "name": "SpooledStringIO",
+      "bases": [
+        "SpooledIOBase"
+      ],
+      "attrs": [
+        "_tell"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "inherits from SpooledIOBase: base layout must be checked",
+        "__init__ accepts **kwargs",
+        "__init__ accepts *args",
+        "read() assigns self._tell outside __init__",
+        "write() assigns self._tell outside __init__",
+        "seek() assigns self._tell outside __init__",
+        "readline() assigns self._tell outside __init__",
+        "readlines() assigns self._tell outside __init__",
+        "buffer() assigns self._buffer outside __init__",
+        "rollover() assigns self._buffer outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/ioutils.py",
+      "lineno": 533,
+      "name": "MultiFileReader",
+      "bases": [],
+      "attrs": [
+        "_fileobjs",
+        "_index",
+        "_joiner"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "__init__ accepts *fileobjs",
+        "read() assigns self._index outside __init__",
+        "seek() assigns self._index outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/iterutils.py",
+      "lineno": 1359,
+      "name": "PathAccessError",
+      "bases": [
+        "KeyError",
+        "IndexError",
+        "TypeError"
+      ],
+      "attrs": [
+        "exc",
+        "path",
+        "seg"
+      ],
+      "status": "review",
+      "reasons": [
+        "inherits from KeyError: base layout must be checked",
+        "inherits from IndexError: base layout must be checked",
+        "inherits from TypeError: base layout must be checked"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/iterutils.py",
+      "lineno": 1507,
+      "name": "GUIDerator",
+      "bases": [],
+      "attrs": [
+        "_sha1",
+        "count",
+        "size"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "reseed() assigns self.pid outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/iterutils.py",
+      "lineno": 1559,
+      "name": "SequentialGUIDerator",
+      "bases": [
+        "GUIDerator"
+      ],
+      "attrs": [],
+      "status": "unsafe",
+      "reasons": [
+        "inherits from GUIDerator: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from",
+        "reseed() assigns self.start outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/iterutils.py",
+      "lineno": 1671,
+      "name": "_Wrapper",
+      "bases": [],
+      "attrs": [
+        "obj"
+      ],
+      "status": "safe",
+      "reasons": [],
+      "decorators": [],
+      "layout": {
+        "attrs": [
+          "obj"
+        ],
+        "count": 20000,
+        "dict_instance_bytes": 64.83,
+        "slotted_instance_bytes": 40.65,
+        "saved_bytes": 24.18,
+        "saved_pct": 37.3
+      }
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/jsonutils.py",
+      "lineno": 126,
+      "name": "JSONLIterator",
+      "bases": [],
+      "attrs": [
+        "_blocksize",
+        "_file_obj",
+        "_line_iter",
+        "_rel_seek",
+        "_reverse",
+        "ignore_errors"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "_init_rel_seek() assigns self._cur_pos outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/listutils.py",
+      "lineno": 59,
+      "name": "BarrelList",
+      "bases": [
+        "list"
+      ],
+      "attrs": [
+        "lists"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "inherits from list: base layout must be checked",
+        "del_slice() assigns self.lists outside __init__",
+        "__setitem__() assigns self.lists outside __init__",
+        "__setslice__() assigns self.lists outside __init__",
+        "__imul__() assigns self.lists outside __init__",
+        "clear() assigns self.lists outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/listutils.py",
+      "lineno": 416,
+      "name": "SplayList",
+      "bases": [
+        "list"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from list: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/mathutils.py",
+      "lineno": 124,
+      "name": "Bits",
+      "bases": [],
+      "attrs": [],
+      "status": "already-slotted",
+      "reasons": [
+        "class already declares __slots__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/mboxutils.py",
+      "lineno": 44,
+      "name": "mbox_readonlydir",
+      "bases": [
+        "mailbox.mbox"
+      ],
+      "attrs": [
+        "maxmem"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "inherits from mailbox.mbox: base layout must be checked",
+        "flush() assigns self._file_length outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/queueutils.py",
+      "lineno": 91,
+      "name": "BasePriorityQueue",
+      "bases": [],
+      "attrs": [
+        "_counter",
+        "_entry_map",
+        "_get_priority",
+        "_pq"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "__init__ accepts **kw",
+        "add() assigns self._entry_map outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/queueutils.py",
+      "lineno": 192,
+      "name": "HeapPriorityQueue",
+      "bases": [
+        "BasePriorityQueue"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from BasePriorityQueue: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/queueutils.py",
+      "lineno": 207,
+      "name": "SortedPriorityQueue",
+      "bases": [
+        "BasePriorityQueue"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from BasePriorityQueue: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/setutils.py",
+      "lineno": 69,
+      "name": "IndexedSet",
+      "bases": [
+        "MutableSet"
+      ],
+      "attrs": [
+        "_c_max_size",
+        "_compactions",
+        "dead_indices",
+        "item_index_map",
+        "item_list"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "inherits from MutableSet: base layout must be checked",
+        "_compact() assigns self._c_max_size outside __init__",
+        "_bulk_discard() assigns self.item_index_map outside __init__",
+        "add() assigns self.item_index_map outside __init__",
+        "remove() assigns self.item_list outside __init__",
+        "pop() assigns self.item_list outside __init__",
+        "reverse() assigns self.item_index_map outside __init__",
+        "sort() assigns self.item_index_map outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/setutils.py",
+      "lineno": 619,
+      "name": "_ComplementSet",
+      "bases": [],
+      "attrs": [],
+      "status": "already-slotted",
+      "reasons": [
+        "class already declares __slots__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/socketutils.py",
+      "lineno": 94,
+      "name": "BufferedSocket",
+      "bases": [],
+      "attrs": [
+        "_recv_lock",
+        "_recvsize",
+        "_send_lock",
+        "maxsize",
+        "rbuf",
+        "sbuf",
+        "sock",
+        "timeout"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "settimeout() assigns self.timeout outside __init__",
+        "setblocking() assigns self.timeout outside __init__",
+        "setmaxsize() assigns self.maxsize outside __init__",
+        "recv() assigns self.rbuf outside __init__",
+        "peek() assigns self.rbuf outside __init__",
+        "recv_close() assigns self.rbuf outside __init__",
+        "recv_until() assigns self.rbuf outside __init__",
+        "recv_size() assigns self.rbuf outside __init__",
+        "close() assigns self.rbuf outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/socketutils.py",
+      "lineno": 596,
+      "name": "Error",
+      "bases": [
+        "socket.error"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from socket.error: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/socketutils.py",
+      "lineno": 607,
+      "name": "ConnectionClosed",
+      "bases": [
+        "Error"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Error: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/socketutils.py",
+      "lineno": 618,
+      "name": "MessageTooLong",
+      "bases": [
+        "Error"
+      ],
+      "attrs": [],
+      "status": "unsafe",
+      "reasons": [
+        "inherits from Error: base layout must be checked",
+        "__init__ assigns no self attributes"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/socketutils.py",
+      "lineno": 633,
+      "name": "Timeout",
+      "bases": [
+        "socket.timeout",
+        "Error"
+      ],
+      "attrs": [],
+      "status": "unsafe",
+      "reasons": [
+        "inherits from socket.timeout: base layout must be checked",
+        "inherits from Error: base layout must be checked",
+        "__init__ assigns no self attributes"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/socketutils.py",
+      "lineno": 648,
+      "name": "NetstringSocket",
+      "bases": [],
+      "attrs": [
+        "_msgsize_maxsize",
+        "bsock",
+        "maxsize",
+        "timeout"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "settimeout() assigns self.timeout outside __init__",
+        "setmaxsize() assigns self._msgsize_maxsize outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/socketutils.py",
+      "lineno": 709,
+      "name": "NetstringProtocolError",
+      "bases": [
+        "Error"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Error: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/socketutils.py",
+      "lineno": 714,
+      "name": "NetstringInvalidSize",
+      "bases": [
+        "NetstringProtocolError"
+      ],
+      "attrs": [],
+      "status": "unsafe",
+      "reasons": [
+        "inherits from NetstringProtocolError: base layout must be checked",
+        "__init__ assigns no self attributes"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/socketutils.py",
+      "lineno": 730,
+      "name": "NetstringMessageTooLong",
+      "bases": [
+        "NetstringProtocolError"
+      ],
+      "attrs": [],
+      "status": "unsafe",
+      "reasons": [
+        "inherits from NetstringProtocolError: base layout must be checked",
+        "__init__ assigns no self attributes"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/socketutils.py",
+      "lineno": 73,
+      "name": "RLock",
+      "bases": [],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/statsutils.py",
+      "lineno": 134,
+      "name": "_StatsProperty",
+      "bases": [],
+      "attrs": [
+        "__doc__",
+        "func",
+        "internal_name",
+        "name"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "__get__(): calls setattr()"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/statsutils.py",
+      "lineno": 156,
+      "name": "Stats",
+      "bases": [],
+      "attrs": [
+        "_is_sorted",
+        "_pearson_precision",
+        "_prop_attr_names",
+        "_sorted_data",
+        "_use_copy",
+        "data",
+        "default"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "_get_sorted_data() assigns self._sorted_data outside __init__",
+        "clear_cache() assigns self._is_sorted outside __init__",
+        "clear_cache(): calls delattr()",
+        "trim_relative() assigns self.data outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/strutils.py",
+      "lineno": 472,
+      "name": "DeaccenterDict",
+      "bases": [
+        "dict"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from dict: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/strutils.py",
+      "lineno": 584,
+      "name": "HTMLTextExtractor",
+      "bases": [
+        "HTMLParser"
+      ],
+      "attrs": [
+        "result"
+      ],
+      "status": "review",
+      "reasons": [
+        "inherits from HTMLParser: base layout must be checked"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/strutils.py",
+      "lineno": 1141,
+      "name": "MultiReplace",
+      "bases": [],
+      "attrs": [
+        "combined_pattern",
+        "group_map"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "__init__ accepts **kwargs"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/tableutils.py",
+      "lineno": 109,
+      "name": "UnsupportedData",
+      "bases": [
+        "TypeError"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from TypeError: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/tableutils.py",
+      "lineno": 113,
+      "name": "InputType",
+      "bases": [],
+      "attrs": [],
+      "status": "unsafe",
+      "reasons": [
+        "__init__ accepts **kw",
+        "__init__ accepts *a",
+        "__init__ assigns no self attributes"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/tableutils.py",
+      "lineno": 121,
+      "name": "DictInputType",
+      "bases": [
+        "InputType"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from InputType: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/tableutils.py",
+      "lineno": 135,
+      "name": "ObjectInputType",
+      "bases": [
+        "InputType"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from InputType: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/tableutils.py",
+      "lineno": 167,
+      "name": "ListInputType",
+      "bases": [
+        "InputType"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from InputType: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/tableutils.py",
+      "lineno": 181,
+      "name": "TupleInputType",
+      "bases": [
+        "InputType"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from InputType: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/tableutils.py",
+      "lineno": 195,
+      "name": "NamedTupleInputType",
+      "bases": [
+        "InputType"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from InputType: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/tableutils.py",
+      "lineno": 209,
+      "name": "Table",
+      "bases": [],
+      "attrs": [
+        "_data",
+        "_width",
+        "headers",
+        "metadata"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "_set_width() assigns self._width outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/tbutils.py",
+      "lineno": 72,
+      "name": "Callpoint",
+      "bases": [],
+      "attrs": [],
+      "status": "already-slotted",
+      "reasons": [
+        "class already declares __slots__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/tbutils.py",
+      "lineno": 168,
+      "name": "_DeferredLine",
+      "bases": [],
+      "attrs": [],
+      "status": "already-slotted",
+      "reasons": [
+        "class already declares __slots__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/tbutils.py",
+      "lineno": 225,
+      "name": "TracebackInfo",
+      "bases": [],
+      "attrs": [
+        "frames"
+      ],
+      "status": "safe",
+      "reasons": [],
+      "decorators": [],
+      "layout": {
+        "attrs": [
+          "frames"
+        ],
+        "count": 20000,
+        "dict_instance_bytes": 64.83,
+        "slotted_instance_bytes": 40.65,
+        "saved_bytes": 24.18,
+        "saved_pct": 37.3
+      }
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/tbutils.py",
+      "lineno": 355,
+      "name": "ExceptionInfo",
+      "bases": [],
+      "attrs": [
+        "exc_msg",
+        "exc_type",
+        "tb_info"
+      ],
+      "status": "safe",
+      "reasons": [],
+      "decorators": [],
+      "layout": {
+        "attrs": [
+          "exc_msg",
+          "exc_type",
+          "tb_info"
+        ],
+        "count": 20000,
+        "dict_instance_bytes": 320.65,
+        "slotted_instance_bytes": 56.65,
+        "saved_bytes": 264.0,
+        "saved_pct": 82.33
+      }
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/tbutils.py",
+      "lineno": 443,
+      "name": "ContextualCallpoint",
+      "bases": [
+        "Callpoint"
+      ],
+      "attrs": [
+        "local_reprs",
+        "post_lines",
+        "pre_lines"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "inherits from Callpoint: base layout must be checked",
+        "__init__ accepts **kw",
+        "__init__ accepts *a",
+        "_populate_context_lines() assigns self.post_lines outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/tbutils.py",
+      "lineno": 546,
+      "name": "ContextualTracebackInfo",
+      "bases": [
+        "TracebackInfo"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from TracebackInfo: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/tbutils.py",
+      "lineno": 555,
+      "name": "ContextualExceptionInfo",
+      "bases": [
+        "ExceptionInfo"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from ExceptionInfo: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/tbutils.py",
+      "lineno": 673,
+      "name": "ParsedException",
+      "bases": [],
+      "attrs": [
+        "exc_msg",
+        "exc_type",
+        "frames"
+      ],
+      "status": "safe",
+      "reasons": [],
+      "decorators": [],
+      "layout": {
+        "attrs": [
+          "exc_msg",
+          "exc_type",
+          "frames"
+        ],
+        "count": 20000,
+        "dict_instance_bytes": 320.65,
+        "slotted_instance_bytes": 56.65,
+        "saved_bytes": 264.0,
+        "saved_pct": 82.33
+      }
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/timeutils.py",
+      "lineno": 465,
+      "name": "ConstantTZInfo",
+      "bases": [
+        "tzinfo"
+      ],
+      "attrs": [
+        "name",
+        "offset"
+      ],
+      "status": "review",
+      "reasons": [
+        "inherits from tzinfo: base layout must be checked"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/timeutils.py",
+      "lineno": 500,
+      "name": "LocalTZInfo",
+      "bases": [
+        "tzinfo"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from tzinfo: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/timeutils.py",
+      "lineno": 579,
+      "name": "USTimeZone",
+      "bases": [
+        "tzinfo"
+      ],
+      "attrs": [
+        "dstname",
+        "reprname",
+        "stdname",
+        "stdoffset"
+      ],
+      "status": "review",
+      "reasons": [
+        "inherits from tzinfo: base layout must be checked"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/typeutils.py",
+      "lineno": 170,
+      "name": "classproperty",
+      "bases": [],
+      "attrs": [
+        "fn"
+      ],
+      "status": "safe",
+      "reasons": [],
+      "decorators": [],
+      "layout": {
+        "attrs": [
+          "fn"
+        ],
+        "count": 20000,
+        "dict_instance_bytes": 64.83,
+        "slotted_instance_bytes": 40.65,
+        "saved_bytes": 24.18,
+        "saved_pct": 37.3
+      }
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/typeutils.py",
+      "lineno": 74,
+      "name": "Sentinel",
+      "bases": [],
+      "attrs": [
+        "name",
+        "var_name"
+      ],
+      "status": "safe",
+      "reasons": [],
+      "decorators": [],
+      "layout": {
+        "attrs": [
+          "name",
+          "var_name"
+        ],
+        "count": 20000,
+        "dict_instance_bytes": 320.65,
+        "slotted_instance_bytes": 48.65,
+        "saved_bytes": 272.0,
+        "saved_pct": 84.83
+      }
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/urlutils.py",
+      "lineno": 113,
+      "name": "URLParseError",
+      "bases": [
+        "ValueError"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from ValueError: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/urlutils.py",
+      "lineno": 397,
+      "name": "cachedproperty",
+      "bases": [],
+      "attrs": [
+        "__doc__",
+        "func"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "__get__() assigns self.func outside __init__",
+        "__get__(): touches instance/class __dict__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/urlutils.py",
+      "lineno": 422,
+      "name": "URL",
+      "bases": [],
+      "attrs": [
+        "_netloc_sep",
+        "_query",
+        "family",
+        "fragment",
+        "host",
+        "password",
+        "path_parts",
+        "port",
+        "scheme",
+        "username"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "path() assigns self.path_parts outside __init__",
+        "normalize() assigns self.host outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/urlutils.py",
+      "lineno": 998,
+      "name": "OrderedMultiDict",
+      "bases": [
+        "dict"
+      ],
+      "attrs": [],
+      "status": "unsafe",
+      "reasons": [
+        "inherits from dict: base layout must be checked",
+        "__init__ accepts **kwargs",
+        "__init__ accepts *args",
+        "__init__ assigns no self attributes",
+        "_clear_ll() assigns self._map outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/urlutils.py",
+      "lineno": 1570,
+      "name": "QueryParamDict",
+      "bases": [
+        "OrderedMultiDict"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from OrderedMultiDict: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/boltons/urlutils.py",
+      "lineno": 825,
+      "name": "_sockaddr",
+      "bases": [
+        "ctypes.Structure"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from ctypes.Structure: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/misc/table_html_app.py",
+      "lineno": 29,
+      "name": "AutoTableRenderer",
+      "bases": [],
+      "attrs": [
+        "max_depth",
+        "orientation"
+      ],
+      "status": "safe",
+      "reasons": [],
+      "decorators": [],
+      "layout": {
+        "attrs": [
+          "max_depth",
+          "orientation"
+        ],
+        "count": 20000,
+        "dict_instance_bytes": 320.65,
+        "slotted_instance_bytes": 48.65,
+        "saved_bytes": 272.0,
+        "saved_pct": 84.83
+      }
+    },
+    {
+      "path": "/tmp/corpus/boltons/misc/table_html_app.py",
+      "lineno": 71,
+      "name": "BasicRender",
+      "bases": [],
+      "attrs": [
+        "autotable_render",
+        "json_render",
+        "qp_name"
+      ],
+      "status": "safe",
+      "reasons": [],
+      "decorators": [],
+      "layout": {
+        "attrs": [
+          "autotable_render",
+          "json_render",
+          "qp_name"
+        ],
+        "count": 20000,
+        "dict_instance_bytes": 320.65,
+        "slotted_instance_bytes": 56.65,
+        "saved_bytes": 264.0,
+        "saved_pct": 82.33
+      }
+    },
+    {
+      "path": "/tmp/corpus/boltons/tests/test_cacheutils.py",
+      "lineno": 10,
+      "name": "CountingCallable",
+      "bases": [],
+      "attrs": [
+        "call_count"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "__call__() assigns self.call_count outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/tests/test_cacheutils.py",
+      "lineno": 540,
+      "name": "_FalseyCallable",
+      "bases": [],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/tests/test_cacheutils.py",
+      "lineno": 320,
+      "name": "Car",
+      "bases": [],
+      "attrs": [
+        "door_count",
+        "h_cache",
+        "hand_count",
+        "hook_count"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "hand() assigns self.hand_count outside __init__",
+        "hook() assigns self.hook_count outside __init__",
+        "door() assigns self.door_count outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/tests/test_cacheutils.py",
+      "lineno": 381,
+      "name": "Car",
+      "bases": [
+        "ABC"
+      ],
+      "attrs": [
+        "h_cache",
+        "hand_count"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "hand() assigns self.hand_count outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/tests/test_cacheutils.py",
+      "lineno": 397,
+      "name": "Proper",
+      "bases": [],
+      "attrs": [
+        "expensive_func"
+      ],
+      "status": "safe",
+      "reasons": [],
+      "decorators": [],
+      "layout": {
+        "attrs": [
+          "expensive_func"
+        ],
+        "count": 20000,
+        "dict_instance_bytes": 64.83,
+        "slotted_instance_bytes": 40.65,
+        "saved_bytes": 24.18,
+        "saved_pct": 37.3
+      }
+    },
+    {
+      "path": "/tmp/corpus/boltons/tests/test_cacheutils.py",
+      "lineno": 431,
+      "name": "AbstractExpensiveCalculator",
+      "bases": [
+        "ABC"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/tests/test_cacheutils.py",
+      "lineno": 449,
+      "name": "Foo",
+      "bases": [],
+      "attrs": [
+        "val"
+      ],
+      "status": "safe",
+      "reasons": [],
+      "decorators": [],
+      "layout": {
+        "attrs": [
+          "val"
+        ],
+        "count": 20000,
+        "dict_instance_bytes": 64.83,
+        "slotted_instance_bytes": 40.65,
+        "saved_bytes": 24.18,
+        "saved_pct": 37.3
+      }
+    },
+    {
+      "path": "/tmp/corpus/boltons/tests/test_cacheutils.py",
+      "lineno": 556,
+      "name": "C",
+      "bases": [],
+      "attrs": [
+        "cache",
+        "calls"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "m() assigns self.calls outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/tests/test_debugutils_trace.py",
+      "lineno": 42,
+      "name": "TestException",
+      "bases": [
+        "Exception"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Exception: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/tests/test_debugutils_trace.py",
+      "lineno": 55,
+      "name": "Target",
+      "bases": [],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/tests/test_debugutils_trace.py",
+      "lineno": 64,
+      "name": "Config",
+      "bases": [],
+      "attrs": [
+        "value"
+      ],
+      "status": "safe",
+      "reasons": [],
+      "decorators": [],
+      "layout": {
+        "attrs": [
+          "value"
+        ],
+        "count": 20000,
+        "dict_instance_bytes": 64.83,
+        "slotted_instance_bytes": 40.65,
+        "saved_bytes": 24.18,
+        "saved_pct": 37.3
+      }
+    },
+    {
+      "path": "/tmp/corpus/boltons/tests/test_debugutils_trace.py",
+      "lineno": 85,
+      "name": "Oldie",
+      "bases": [],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/tests/test_excutils.py",
+      "lineno": 4,
+      "name": "MyErr",
+      "bases": [
+        "ExceptionCauseMixin",
+        "Exception"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from ExceptionCauseMixin: base layout must be checked",
+        "inherits from Exception: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/tests/test_fileutils.py",
+      "lineno": 46,
+      "name": "_FlushFailingFile",
+      "bases": [],
+      "attrs": [
+        "f"
+      ],
+      "status": "safe",
+      "reasons": [],
+      "decorators": [],
+      "layout": {
+        "attrs": [
+          "f"
+        ],
+        "count": 20000,
+        "dict_instance_bytes": 64.83,
+        "slotted_instance_bytes": 40.65,
+        "saved_bytes": 24.18,
+        "saved_pct": 37.3
+      }
+    },
+    {
+      "path": "/tmp/corpus/boltons/tests/test_fileutils.py",
+      "lineno": 63,
+      "name": "_FlushFailingSaver",
+      "bases": [
+        "fileutils.AtomicSaver"
+      ],
+      "attrs": [],
+      "status": "unsafe",
+      "reasons": [
+        "inherits from fileutils.AtomicSaver: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from",
+        "_open_part_file() assigns self.part_file outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/tests/test_funcutils.py",
+      "lineno": 12,
+      "name": "Greeter",
+      "bases": [],
+      "attrs": [
+        "greeting"
+      ],
+      "status": "safe",
+      "reasons": [],
+      "decorators": [],
+      "layout": {
+        "attrs": [
+          "greeting"
+        ],
+        "count": 20000,
+        "dict_instance_bytes": 64.83,
+        "slotted_instance_bytes": 40.65,
+        "saved_bytes": 24.18,
+        "saved_pct": 37.3
+      }
+    },
+    {
+      "path": "/tmp/corpus/boltons/tests/test_funcutils.py",
+      "lineno": 26,
+      "name": "SubGreeter",
+      "bases": [
+        "Greeter"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Greeter: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/tests/test_funcutils.py",
+      "lineno": 59,
+      "name": "Number",
+      "bases": [],
+      "attrs": [
+        "val"
+      ],
+      "status": "review",
+      "reasons": [
+        "decorator @total_ordering may rely on a per-instance dict"
+      ],
+      "decorators": [
+        "total_ordering"
+      ]
+    },
+    {
+      "path": "/tmp/corpus/boltons/tests/test_funcutils_fb.py",
+      "lineno": 167,
+      "name": "Num",
+      "bases": [],
+      "attrs": [
+        "num"
+      ],
+      "status": "safe",
+      "reasons": [],
+      "decorators": [],
+      "layout": {
+        "attrs": [
+          "num"
+        ],
+        "count": 20000,
+        "dict_instance_bytes": 64.83,
+        "slotted_instance_bytes": 40.65,
+        "saved_bytes": 24.18,
+        "saved_pct": 37.3
+      }
+    },
+    {
+      "path": "/tmp/corpus/boltons/tests/test_gcutils.py",
+      "lineno": 13,
+      "name": "TestType",
+      "bases": [],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/tests/test_gcutils.py",
+      "lineno": 23,
+      "name": "Base",
+      "bases": [],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/tests/test_gcutils.py",
+      "lineno": 26,
+      "name": "Sub",
+      "bases": [
+        "Base"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Base: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/tests/test_ioutils.py",
+      "lineno": 17,
+      "name": "AssertionsMixin",
+      "bases": [],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/tests/test_ioutils.py",
+      "lineno": 23,
+      "name": "BaseTestMixin",
+      "bases": [],
+      "attrs": [],
+      "status": "unsafe",
+      "reasons": [
+        "no __init__() to derive a fixed attribute set from",
+        "test_set_softspace_attribute() assigns self.spooled_flo outside __init__",
+        "test_set_softspace_attribute_rolled() assigns self.spooled_flo outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/tests/test_ioutils.py",
+      "lineno": 233,
+      "name": "TestSpooledBytesIO",
+      "bases": [
+        "TestCase",
+        "BaseTestMixin",
+        "AssertionsMixin"
+      ],
+      "attrs": [],
+      "status": "unsafe",
+      "reasons": [
+        "inherits from TestCase: base layout must be checked",
+        "inherits from BaseTestMixin: base layout must be checked",
+        "inherits from AssertionsMixin: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from",
+        "setUp() assigns self.data_type outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/tests/test_ioutils.py",
+      "lineno": 360,
+      "name": "TestSpooledStringIO",
+      "bases": [
+        "TestCase",
+        "BaseTestMixin",
+        "AssertionsMixin"
+      ],
+      "attrs": [],
+      "status": "unsafe",
+      "reasons": [
+        "inherits from TestCase: base layout must be checked",
+        "inherits from BaseTestMixin: base layout must be checked",
+        "inherits from AssertionsMixin: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from",
+        "setUp() assigns self.data_type outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/tests/test_ioutils.py",
+      "lineno": 587,
+      "name": "TestMultiFileReader",
+      "bases": [
+        "TestCase"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from TestCase: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/tests/test_iterutils.py",
+      "lineno": 28,
+      "name": "TestSplit",
+      "bases": [],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/tests/test_iterutils.py",
+      "lineno": 40,
+      "name": "TestFirst",
+      "bases": [],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/tests/test_iterutils.py",
+      "lineno": 76,
+      "name": "TestRemap",
+      "bases": [],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/tests/test_iterutils.py",
+      "lineno": 373,
+      "name": "TestGetPath",
+      "bases": [],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/tests/test_iterutils.py",
+      "lineno": 645,
+      "name": "_FalseyCallable",
+      "bases": [],
+      "attrs": [
+        "calls",
+        "func"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "__call__() assigns self.calls outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/tests/test_jsonutils.py",
+      "lineno": 42,
+      "name": "_CappedReadFile",
+      "bases": [],
+      "attrs": [
+        "_fo",
+        "_max_reads",
+        "_reads"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "defines __getattr__(), which requires dynamic attribute lookup",
+        "read() assigns self._reads outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/tests/test_setutils.py",
+      "lineno": 181,
+      "name": "OpOverloader",
+      "bases": [],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/tests/test_strutils.py",
+      "lineno": 102,
+      "name": "TestMultiReplace",
+      "bases": [
+        "TestCase"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from TestCase: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/tests/test_tableutils.py",
+      "lineno": 48,
+      "name": "TestType",
+      "bases": [],
+      "attrs": [
+        "greeting"
+      ],
+      "status": "safe",
+      "reasons": [],
+      "decorators": [],
+      "layout": {
+        "attrs": [
+          "greeting"
+        ],
+        "count": 20000,
+        "dict_instance_bytes": 64.83,
+        "slotted_instance_bytes": 40.65,
+        "saved_bytes": 24.18,
+        "saved_pct": 37.3
+      }
+    },
+    {
+      "path": "/tmp/corpus/boltons/tests/test_timeutils.py",
+      "lineno": 102,
+      "name": "NaiveTZ",
+      "bases": [
+        "tzinfo"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from tzinfo: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/tests/test_typeutils.py",
+      "lineno": 22,
+      "name": "Meta",
+      "bases": [
+        "type"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from type: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/boltons/tests/test_typeutils.py",
+      "lineno": 25,
+      "name": "SubMeta",
+      "bases": [
+        "Meta"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Meta: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/cacheout-opt-lab/src/cacheout/cache.py",
+      "lineno": 49,
+      "name": "MemoizedFunction",
+      "bases": [
+        "Subscript"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Subscript: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/cacheout-opt-lab/src/cacheout/cache.py",
+      "lineno": 59,
+      "name": "MemoizedDecorator",
+      "bases": [
+        "t.Protocol"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from t.Protocol: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/cacheout-opt-lab/src/cacheout/cache.py",
+      "lineno": 67,
+      "name": "RemovalCause",
+      "bases": [
+        "Enum"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Enum: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/cacheout-opt-lab/src/cacheout/cache.py",
+      "lineno": 85,
+      "name": "Cache",
+      "bases": [],
+      "attrs": [
+        "default",
+        "maxsize",
+        "on_delete",
+        "on_get",
+        "on_set",
+        "stats",
+        "timer",
+        "ttl"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "setup() assigns self._cache outside __init__",
+        "configure() assigns self.default outside __init__",
+        "_set() assigns self._cache outside __init__",
+        "expire() assigns self._expire_times outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/cacheout-opt-lab/src/cacheout/cache.py",
+      "lineno": 791,
+      "name": "_Identity",
+      "bases": [],
+      "attrs": [],
+      "status": "already-slotted",
+      "reasons": [
+        "class already declares __slots__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/cacheout-opt-lab/src/cacheout/fifo.py",
+      "lineno": 12,
+      "name": "FIFOCache",
+      "bases": [
+        "Cache"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Cache: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/cacheout-opt-lab/src/cacheout/lfu.py",
+      "lineno": 9,
+      "name": "LFUCache",
+      "bases": [
+        "Cache"
+      ],
+      "attrs": [],
+      "status": "unsafe",
+      "reasons": [
+        "inherits from Cache: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from",
+        "setup() assigns self._access_counts outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/cacheout-opt-lab/src/cacheout/lifo.py",
+      "lineno": 8,
+      "name": "LIFOCache",
+      "bases": [
+        "Cache"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Cache: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/cacheout-opt-lab/src/cacheout/lru.py",
+      "lineno": 8,
+      "name": "LRUCache",
+      "bases": [
+        "Cache"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Cache: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/cacheout-opt-lab/src/cacheout/manager.py",
+      "lineno": 9,
+      "name": "CacheManager",
+      "bases": [],
+      "attrs": [
+        "_lock",
+        "cache_class"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "setup() assigns self._caches outside __init__",
+        "register() assigns self._caches outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/cacheout-opt-lab/src/cacheout/mru.py",
+      "lineno": 8,
+      "name": "MRUCache",
+      "bases": [
+        "LRUCache"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from LRUCache: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/cacheout-opt-lab/src/cacheout/rr.py",
+      "lineno": 12,
+      "name": "RRCache",
+      "bases": [
+        "Cache"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Cache: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/cacheout-opt-lab/src/cacheout/stats.py",
+      "lineno": 11,
+      "name": "CacheStats",
+      "bases": [],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "dataclass: needs slots=True, not a plain __slots__ edit",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": [
+        "dataclasses.dataclass"
+      ]
+    },
+    {
+      "path": "/tmp/corpus/cacheout-opt-lab/src/cacheout/stats.py",
+      "lineno": 85,
+      "name": "CacheStatsTracker",
+      "bases": [],
+      "attrs": [
+        "_cache",
+        "_enabled",
+        "_lock",
+        "_paused",
+        "_stats"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "enable() assigns self._enabled outside __init__",
+        "disable() assigns self._enabled outside __init__",
+        "pause() assigns self._paused outside __init__",
+        "resume() assigns self._paused outside __init__",
+        "reset() assigns self._stats outside __init__",
+        "info() assigns self._stats outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/cacheout-opt-lab/tests/test_diff.py",
+      "lineno": 46,
+      "name": "Clock",
+      "bases": [],
+      "attrs": [
+        "t"
+      ],
+      "status": "safe",
+      "reasons": [],
+      "decorators": [],
+      "layout": {
+        "attrs": [
+          "t"
+        ],
+        "count": 20000,
+        "dict_instance_bytes": 64.83,
+        "slotted_instance_bytes": 40.65,
+        "saved_bytes": 24.18,
+        "saved_pct": 37.3
+      }
+    },
+    {
+      "path": "/tmp/corpus/cacheout-opt-lab/tests/test_diff.py",
+      "lineno": 128,
+      "name": "DiffTests",
+      "bases": [
+        "unittest.TestCase"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from unittest.TestCase: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/cachetools-lru-opt-lab/baseline_src/cachetools/__init__.py",
+      "lineno": 28,
+      "name": "Cache",
+      "bases": [
+        "collections.abc.MutableMapping"
+      ],
+      "attrs": [
+        "__currsize",
+        "__data",
+        "__maxsize",
+        "__size",
+        "getsizeof"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "inherits from collections.abc.MutableMapping: base layout must be checked",
+        "__setitem__() assigns self.__currsize outside __init__",
+        "__delitem__() assigns self.__currsize outside __init__",
+        "clear() assigns self.__currsize outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/cachetools-lru-opt-lab/baseline_src/cachetools/__init__.py",
+      "lineno": 174,
+      "name": "FIFOCache",
+      "bases": [
+        "Cache"
+      ],
+      "attrs": [
+        "__order"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "inherits from Cache: base layout must be checked",
+        "__setitem__() assigns self.__order outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/cachetools-lru-opt-lab/baseline_src/cachetools/__init__.py",
+      "lineno": 208,
+      "name": "LFUCache",
+      "bases": [
+        "Cache"
+      ],
+      "attrs": [
+        "__links",
+        "__root"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "inherits from Cache: base layout must be checked",
+        "__setitem__() assigns self.__links outside __init__",
+        "__touch() assigns self.__links outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/cachetools-lru-opt-lab/baseline_src/cachetools/__init__.py",
+      "lineno": 294,
+      "name": "LRUCache",
+      "bases": [
+        "Cache"
+      ],
+      "attrs": [
+        "__order"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "inherits from Cache: base layout must be checked",
+        "__touch() assigns self.__order outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/cachetools-lru-opt-lab/baseline_src/cachetools/__init__.py",
+      "lineno": 340,
+      "name": "RRCache",
+      "bases": [
+        "Cache"
+      ],
+      "attrs": [
+        "__choice",
+        "__index",
+        "__keys"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "inherits from Cache: base layout must be checked",
+        "__setitem__() assigns self.__index outside __init__",
+        "__delitem__() assigns self.__index outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/cachetools-lru-opt-lab/baseline_src/cachetools/__init__.py",
+      "lineno": 385,
+      "name": "_TimedCache",
+      "bases": [
+        "Cache"
+      ],
+      "attrs": [
+        "__timer"
+      ],
+      "status": "review",
+      "reasons": [
+        "inherits from Cache: base layout must be checked"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/cachetools-lru-opt-lab/baseline_src/cachetools/__init__.py",
+      "lineno": 463,
+      "name": "TTLCache",
+      "bases": [
+        "_TimedCache"
+      ],
+      "attrs": [
+        "__links",
+        "__root",
+        "__ttl"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "inherits from _TimedCache: base layout must be checked",
+        "__setstate__(): touches instance/class __dict__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/cachetools-lru-opt-lab/baseline_src/cachetools/__init__.py",
+      "lineno": 605,
+      "name": "TLRUCache",
+      "bases": [
+        "_TimedCache"
+      ],
+      "attrs": [
+        "__items",
+        "__order",
+        "__ttu"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "inherits from _TimedCache: base layout must be checked",
+        "expire() assigns self.__order outside __init__",
+        "__delitem() assigns self.__items outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/cachetools-lru-opt-lab/baseline_src/cachetools/__init__.py",
+      "lineno": 744,
+      "name": "CacheInfo",
+      "bases": [
+        "collections.namedtuple()"
+      ],
+      "attrs": [],
+      "status": "already-slotted",
+      "reasons": [
+        "class already declares __slots__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/cachetools-lru-opt-lab/baseline_src/cachetools/__init__.py",
+      "lineno": 211,
+      "name": "_Link",
+      "bases": [],
+      "attrs": [],
+      "status": "already-slotted",
+      "reasons": [
+        "class already declares __slots__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/cachetools-lru-opt-lab/baseline_src/cachetools/__init__.py",
+      "lineno": 388,
+      "name": "_Timer",
+      "bases": [],
+      "attrs": [
+        "__nesting",
+        "__timer"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "defines __getattr__(), which requires dynamic attribute lookup",
+        "__enter__() assigns self.__nesting outside __init__",
+        "__exit__() assigns self.__nesting outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/cachetools-lru-opt-lab/baseline_src/cachetools/__init__.py",
+      "lineno": 466,
+      "name": "_Link",
+      "bases": [],
+      "attrs": [],
+      "status": "already-slotted",
+      "reasons": [
+        "class already declares __slots__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/cachetools-lru-opt-lab/baseline_src/cachetools/__init__.py",
+      "lineno": 611,
+      "name": "_Item",
+      "bases": [],
+      "attrs": [],
+      "status": "already-slotted",
+      "reasons": [
+        "class already declares __slots__"
+      ],
+      "decorators": [
+        "functools.total_ordering"
+      ]
+    },
+    {
+      "path": "/tmp/corpus/cachetools-lru-opt-lab/baseline_src/cachetools/keys.py",
+      "lineno": 6,
+      "name": "_HashedTuple",
+      "bases": [
+        "tuple"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from tuple: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/cachetools-lru-opt-lab/src/cachetools/__init__.py",
+      "lineno": 28,
+      "name": "Cache",
+      "bases": [
+        "collections.abc.MutableMapping"
+      ],
+      "attrs": [
+        "__currsize",
+        "__data",
+        "__maxsize",
+        "__size",
+        "getsizeof"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "inherits from collections.abc.MutableMapping: base layout must be checked",
+        "__setitem__() assigns self.__currsize outside __init__",
+        "__delitem__() assigns self.__currsize outside __init__",
+        "clear() assigns self.__currsize outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/cachetools-lru-opt-lab/src/cachetools/__init__.py",
+      "lineno": 174,
+      "name": "FIFOCache",
+      "bases": [
+        "Cache"
+      ],
+      "attrs": [
+        "__order"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "inherits from Cache: base layout must be checked",
+        "__setitem__() assigns self.__order outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/cachetools-lru-opt-lab/src/cachetools/__init__.py",
+      "lineno": 208,
+      "name": "LFUCache",
+      "bases": [
+        "Cache"
+      ],
+      "attrs": [
+        "__links",
+        "__root"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "inherits from Cache: base layout must be checked",
+        "__setitem__() assigns self.__links outside __init__",
+        "__touch() assigns self.__links outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/cachetools-lru-opt-lab/src/cachetools/__init__.py",
+      "lineno": 294,
+      "name": "LRUCache",
+      "bases": [
+        "Cache"
+      ],
+      "attrs": [
+        "__order"
+      ],
+      "status": "review",
+      "reasons": [
+        "inherits from Cache: base layout must be checked"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/cachetools-lru-opt-lab/src/cachetools/__init__.py",
+      "lineno": 341,
+      "name": "RRCache",
+      "bases": [
+        "Cache"
+      ],
+      "attrs": [
+        "__choice",
+        "__index",
+        "__keys"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "inherits from Cache: base layout must be checked",
+        "__setitem__() assigns self.__index outside __init__",
+        "__delitem__() assigns self.__index outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/cachetools-lru-opt-lab/src/cachetools/__init__.py",
+      "lineno": 386,
+      "name": "_TimedCache",
+      "bases": [
+        "Cache"
+      ],
+      "attrs": [
+        "__timer"
+      ],
+      "status": "review",
+      "reasons": [
+        "inherits from Cache: base layout must be checked"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/cachetools-lru-opt-lab/src/cachetools/__init__.py",
+      "lineno": 464,
+      "name": "TTLCache",
+      "bases": [
+        "_TimedCache"
+      ],
+      "attrs": [
+        "__links",
+        "__root",
+        "__ttl"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "inherits from _TimedCache: base layout must be checked",
+        "__setstate__(): touches instance/class __dict__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/cachetools-lru-opt-lab/src/cachetools/__init__.py",
+      "lineno": 606,
+      "name": "TLRUCache",
+      "bases": [
+        "_TimedCache"
+      ],
+      "attrs": [
+        "__items",
+        "__order",
+        "__ttu"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "inherits from _TimedCache: base layout must be checked",
+        "expire() assigns self.__order outside __init__",
+        "__delitem() assigns self.__items outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/cachetools-lru-opt-lab/src/cachetools/__init__.py",
+      "lineno": 745,
+      "name": "CacheInfo",
+      "bases": [
+        "collections.namedtuple()"
+      ],
+      "attrs": [],
+      "status": "already-slotted",
+      "reasons": [
+        "class already declares __slots__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/cachetools-lru-opt-lab/src/cachetools/__init__.py",
+      "lineno": 211,
+      "name": "_Link",
+      "bases": [],
+      "attrs": [],
+      "status": "already-slotted",
+      "reasons": [
+        "class already declares __slots__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/cachetools-lru-opt-lab/src/cachetools/__init__.py",
+      "lineno": 389,
+      "name": "_Timer",
+      "bases": [],
+      "attrs": [
+        "__nesting",
+        "__timer"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "defines __getattr__(), which requires dynamic attribute lookup",
+        "__enter__() assigns self.__nesting outside __init__",
+        "__exit__() assigns self.__nesting outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/cachetools-lru-opt-lab/src/cachetools/__init__.py",
+      "lineno": 467,
+      "name": "_Link",
+      "bases": [],
+      "attrs": [],
+      "status": "already-slotted",
+      "reasons": [
+        "class already declares __slots__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/cachetools-lru-opt-lab/src/cachetools/__init__.py",
+      "lineno": 612,
+      "name": "_Item",
+      "bases": [],
+      "attrs": [],
+      "status": "already-slotted",
+      "reasons": [
+        "class already declares __slots__"
+      ],
+      "decorators": [
+        "functools.total_ordering"
+      ]
+    },
+    {
+      "path": "/tmp/corpus/cachetools-lru-opt-lab/src/cachetools/keys.py",
+      "lineno": 6,
+      "name": "_HashedTuple",
+      "bases": [
+        "tuple"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from tuple: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/deepmerge/deepmerge/exception.py",
+      "lineno": 8,
+      "name": "DeepMergeException",
+      "bases": [
+        "Exception"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Exception: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/deepmerge/deepmerge/exception.py",
+      "lineno": 12,
+      "name": "StrategyNotFound",
+      "bases": [
+        "DeepMergeException"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from DeepMergeException: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/deepmerge/deepmerge/exception.py",
+      "lineno": 16,
+      "name": "InvalidMerge",
+      "bases": [
+        "DeepMergeException"
+      ],
+      "attrs": [
+        "base",
+        "config",
+        "nxt",
+        "path",
+        "strategy_list_name"
+      ],
+      "status": "review",
+      "reasons": [
+        "inherits from DeepMergeException: base layout must be checked"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/deepmerge/deepmerge/extended_set.py",
+      "lineno": 4,
+      "name": "ExtendedSet",
+      "bases": [
+        "set"
+      ],
+      "attrs": [
+        "_buckets"
+      ],
+      "status": "review",
+      "reasons": [
+        "inherits from set: base layout must be checked"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/deepmerge/deepmerge/merger.py",
+      "lineno": 10,
+      "name": "Merger",
+      "bases": [],
+      "attrs": [
+        "_fallback_strategy",
+        "_type_conflict_strategy",
+        "_type_strategies"
+      ],
+      "status": "safe",
+      "reasons": [],
+      "decorators": [],
+      "layout": {
+        "attrs": [
+          "_fallback_strategy",
+          "_type_conflict_strategy",
+          "_type_strategies"
+        ],
+        "count": 20000,
+        "dict_instance_bytes": 320.65,
+        "slotted_instance_bytes": 56.65,
+        "saved_bytes": 264.0,
+        "saved_pct": 82.33
+      }
+    },
+    {
+      "path": "/tmp/corpus/deepmerge/deepmerge/strategy/core.py",
+      "lineno": 21,
+      "name": "StrategyList",
+      "bases": [],
+      "attrs": [
+        "_strategies"
+      ],
+      "status": "safe",
+      "reasons": [],
+      "decorators": [],
+      "layout": {
+        "attrs": [
+          "_strategies"
+        ],
+        "count": 20000,
+        "dict_instance_bytes": 64.83,
+        "slotted_instance_bytes": 40.65,
+        "saved_bytes": 24.18,
+        "saved_pct": 37.3
+      }
+    },
+    {
+      "path": "/tmp/corpus/deepmerge/deepmerge/strategy/dict.py",
+      "lineno": 7,
+      "name": "DictStrategies",
+      "bases": [
+        "StrategyList"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from StrategyList: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/deepmerge/deepmerge/strategy/fallback.py",
+      "lineno": 11,
+      "name": "FallbackStrategies",
+      "bases": [
+        "StrategyList"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from StrategyList: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/deepmerge/deepmerge/strategy/list.py",
+      "lineno": 8,
+      "name": "ListStrategies",
+      "bases": [
+        "StrategyList"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from StrategyList: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/deepmerge/deepmerge/strategy/set.py",
+      "lineno": 7,
+      "name": "SetStrategies",
+      "bases": [
+        "StrategyList"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from StrategyList: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/deepmerge/deepmerge/strategy/type_conflict.py",
+      "lineno": 13,
+      "name": "TypeConflictStrategies",
+      "bases": [
+        "StrategyList"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from StrategyList: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/emoji-opt-lab/base/emoji/core.py",
+      "lineno": 46,
+      "name": "_EmojiListReturn",
+      "bases": [
+        "TypedDict"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from TypedDict: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/emoji-opt-lab/base/emoji/core.py",
+      "lineno": 52,
+      "name": "config",
+      "bases": [],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/emoji-opt-lab/base/emoji/tokenizer.py",
+      "lineno": 26,
+      "name": "EmojiMatch",
+      "bases": [],
+      "attrs": [],
+      "status": "already-slotted",
+      "reasons": [
+        "class already declares __slots__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/emoji-opt-lab/base/emoji/tokenizer.py",
+      "lineno": 87,
+      "name": "EmojiMatchZWJ",
+      "bases": [
+        "EmojiMatch"
+      ],
+      "attrs": [],
+      "status": "already-slotted",
+      "reasons": [
+        "class already declares __slots__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/emoji-opt-lab/base/emoji/tokenizer.py",
+      "lineno": 123,
+      "name": "EmojiMatchZWJNonRGI",
+      "bases": [
+        "EmojiMatchZWJ"
+      ],
+      "attrs": [
+        "emojis"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "inherits from EmojiMatchZWJ: base layout must be checked",
+        "_update() assigns self.data outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/emoji-opt-lab/base/emoji/tokenizer.py",
+      "lineno": 148,
+      "name": "Token",
+      "bases": [
+        "NamedTuple"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from NamedTuple: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/emoji-opt-lab/base/emoji/unicode_codes/__init__.py",
+      "lineno": 51,
+      "name": "EmojiDataDict",
+      "bases": [
+        "Subscript"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Subscript: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/emoji-opt-lab/emoji/core.py",
+      "lineno": 46,
+      "name": "_EmojiListReturn",
+      "bases": [
+        "TypedDict"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from TypedDict: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/emoji-opt-lab/emoji/core.py",
+      "lineno": 52,
+      "name": "config",
+      "bases": [],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/emoji-opt-lab/emoji/tokenizer.py",
+      "lineno": 26,
+      "name": "EmojiMatch",
+      "bases": [],
+      "attrs": [],
+      "status": "already-slotted",
+      "reasons": [
+        "class already declares __slots__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/emoji-opt-lab/emoji/tokenizer.py",
+      "lineno": 87,
+      "name": "EmojiMatchZWJ",
+      "bases": [
+        "EmojiMatch"
+      ],
+      "attrs": [],
+      "status": "already-slotted",
+      "reasons": [
+        "class already declares __slots__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/emoji-opt-lab/emoji/tokenizer.py",
+      "lineno": 123,
+      "name": "EmojiMatchZWJNonRGI",
+      "bases": [
+        "EmojiMatchZWJ"
+      ],
+      "attrs": [
+        "emojis"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "inherits from EmojiMatchZWJ: base layout must be checked",
+        "_update() assigns self.data outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/emoji-opt-lab/emoji/tokenizer.py",
+      "lineno": 148,
+      "name": "Token",
+      "bases": [
+        "NamedTuple"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from NamedTuple: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/emoji-opt-lab/emoji/unicode_codes/__init__.py",
+      "lineno": 51,
+      "name": "EmojiDataDict",
+      "bases": [
+        "Subscript"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Subscript: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/jsonpatch-apply-opt-lab/src/jsonpatch.py",
+      "lineno": 100,
+      "name": "JsonPatchException",
+      "bases": [
+        "Exception"
+      ],
+      "attrs": [
+        "op"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "inherits from Exception: base layout must be checked",
+        "__init__ accepts **kwargs",
+        "__init__ accepts *args"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/jsonpatch-apply-opt-lab/src/jsonpatch.py",
+      "lineno": 117,
+      "name": "InvalidJsonPatch",
+      "bases": [
+        "JsonPatchException"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from JsonPatchException: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/jsonpatch-apply-opt-lab/src/jsonpatch.py",
+      "lineno": 121,
+      "name": "JsonPatchConflict",
+      "bases": [
+        "JsonPatchException"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from JsonPatchException: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/jsonpatch-apply-opt-lab/src/jsonpatch.py",
+      "lineno": 130,
+      "name": "JsonPatchPathNotFound",
+      "bases": [
+        "JsonPatchConflict"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from JsonPatchConflict: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/jsonpatch-apply-opt-lab/src/jsonpatch.py",
+      "lineno": 148,
+      "name": "JsonPatchTestFailed",
+      "bases": [
+        "JsonPatchException",
+        "AssertionError"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from JsonPatchException: base layout must be checked",
+        "inherits from AssertionError: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/jsonpatch-apply-opt-lab/src/jsonpatch.py",
+      "lineno": 330,
+      "name": "_NullJournal",
+      "bases": [],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/jsonpatch-apply-opt-lab/src/jsonpatch.py",
+      "lineno": 353,
+      "name": "_Journal",
+      "bases": [],
+      "attrs": [
+        "_orders",
+        "_undo"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "delitem() assigns self._orders outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/jsonpatch-apply-opt-lab/src/jsonpatch.py",
+      "lineno": 473,
+      "name": "PatchOperation",
+      "bases": [],
+      "attrs": [
+        "location",
+        "operation",
+        "pointer",
+        "pointer_cls"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "set_part() assigns self.location outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/jsonpatch-apply-opt-lab/src/jsonpatch.py",
+      "lineno": 583,
+      "name": "RemoveOperation",
+      "bases": [
+        "PatchOperation"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from PatchOperation: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/jsonpatch-apply-opt-lab/src/jsonpatch.py",
+      "lineno": 606,
+      "name": "AddOperation",
+      "bases": [
+        "PatchOperation"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from PatchOperation: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/jsonpatch-apply-opt-lab/src/jsonpatch.py",
+      "lineno": 648,
+      "name": "ReplaceOperation",
+      "bases": [
+        "PatchOperation"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from PatchOperation: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/jsonpatch-apply-opt-lab/src/jsonpatch.py",
+      "lineno": 686,
+      "name": "MoveOperation",
+      "bases": [
+        "PatchOperation"
+      ],
+      "attrs": [],
+      "status": "unsafe",
+      "reasons": [
+        "inherits from PatchOperation: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from",
+        "set_from_part() assigns self.operation outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/jsonpatch-apply-opt-lab/src/jsonpatch.py",
+      "lineno": 766,
+      "name": "TestOperation",
+      "bases": [
+        "PatchOperation"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from PatchOperation: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/jsonpatch-apply-opt-lab/src/jsonpatch.py",
+      "lineno": 793,
+      "name": "CopyOperation",
+      "bases": [
+        "PatchOperation"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from PatchOperation: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/jsonpatch-apply-opt-lab/src/jsonpatch.py",
+      "lineno": 820,
+      "name": "AppendOperation",
+      "bases": [
+        "PatchOperation"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from PatchOperation: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/jsonpatch-apply-opt-lab/src/jsonpatch.py",
+      "lineno": 904,
+      "name": "JsonPatch",
+      "bases": [],
+      "attrs": [
+        "_compiled_ops",
+        "_compiled_sig",
+        "patch",
+        "pointer_cls"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "_ops() assigns self._compiled_ops outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/jsonpatch-apply-opt-lab/src/jsonpatch.py",
+      "lineno": 1201,
+      "name": "JsonPatchWithAppend",
+      "bases": [
+        "JsonPatch"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from JsonPatch: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/jsonpatch-apply-opt-lab/src/jsonpatch.py",
+      "lineno": 1230,
+      "name": "DiffBuilder",
+      "bases": [],
+      "attrs": [
+        "__root",
+        "arrays",
+        "dst_doc",
+        "dumps",
+        "generate_test_ops",
+        "index_storage",
+        "optimization",
+        "pointer_cls",
+        "remove_tests",
+        "src_doc"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "_array_items() assigns self.arrays outside __init__",
+        "_item_removed() assigns self.remove_tests outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/jsonpatch-apply-opt-lab/src/jsonpatch.py",
+      "lineno": 1585,
+      "name": "_AppendDiffBuilder",
+      "bases": [
+        "DiffBuilder"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from DiffBuilder: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/jsonpatch-apply-opt-lab/src/jsonpatch.py",
+      "lineno": 1652,
+      "name": "_ArrayItem",
+      "bases": [],
+      "attrs": [],
+      "status": "already-slotted",
+      "reasons": [
+        "class already declares __slots__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/jsonpatch-apply-opt-lab/src/jsonpatch.py",
+      "lineno": 1669,
+      "name": "_ArrayItems",
+      "bases": [],
+      "attrs": [
+        "items",
+        "labels",
+        "present",
+        "present_labels"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "_relabel() assigns self.labels outside __init__",
+        "reset() assigns self.present outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/jsonpatch-apply-opt-lab/tests/test_diff.py",
+      "lineno": 245,
+      "name": "DifferentialTest",
+      "bases": [
+        "unittest.TestCase"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from unittest.TestCase: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/parse/parse/__init__.py",
+      "lineno": 51,
+      "name": "int_convert",
+      "bases": [],
+      "attrs": [
+        "base"
+      ],
+      "status": "safe",
+      "reasons": [],
+      "decorators": [],
+      "layout": {
+        "attrs": [
+          "base"
+        ],
+        "count": 20000,
+        "dict_instance_bytes": 64.83,
+        "slotted_instance_bytes": 40.65,
+        "saved_bytes": 24.18,
+        "saved_pct": 37.3
+      }
+    },
+    {
+      "path": "/tmp/corpus/parse/parse/__init__.py",
+      "lineno": 101,
+      "name": "convert_first",
+      "bases": [],
+      "attrs": [
+        "converter"
+      ],
+      "status": "safe",
+      "reasons": [],
+      "decorators": [],
+      "layout": {
+        "attrs": [
+          "converter"
+        ],
+        "count": 20000,
+        "dict_instance_bytes": 64.83,
+        "slotted_instance_bytes": 40.65,
+        "saved_bytes": 24.18,
+        "saved_pct": 37.3
+      }
+    },
+    {
+      "path": "/tmp/corpus/parse/parse/__init__.py",
+      "lineno": 117,
+      "name": "FixedTzOffset",
+      "bases": [
+        "tzinfo"
+      ],
+      "attrs": [
+        "_name",
+        "_offset"
+      ],
+      "status": "review",
+      "reasons": [
+        "inherits from tzinfo: base layout must be checked"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/parse/parse/__init__.py",
+      "lineno": 349,
+      "name": "TooManyFields",
+      "bases": [
+        "ValueError"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from ValueError: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/parse/parse/__init__.py",
+      "lineno": 353,
+      "name": "RepeatedNameError",
+      "bases": [
+        "ValueError"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from ValueError: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/parse/parse/__init__.py",
+      "lineno": 425,
+      "name": "Parser",
+      "bases": [
+        "object"
+      ],
+      "attrs": [
+        "__match_re",
+        "__search_re",
+        "_expression",
+        "_extra_types",
+        "_fixed_fields",
+        "_format",
+        "_group_index",
+        "_group_to_name_map",
+        "_name_to_group_map",
+        "_name_types",
+        "_named_fields",
+        "_re_flags",
+        "_type_conversions"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "_search_re() assigns self.__search_re outside __init__",
+        "_match_re() assigns self.__match_re outside __init__",
+        "_to_group_name() assigns self._group_to_name_map outside __init__",
+        "_handle_field() assigns self._group_index outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/parse/parse/__init__.py",
+      "lineno": 906,
+      "name": "Result",
+      "bases": [
+        "object"
+      ],
+      "attrs": [
+        "fixed",
+        "named",
+        "spans"
+      ],
+      "status": "safe",
+      "reasons": [],
+      "decorators": [],
+      "layout": {
+        "attrs": [
+          "fixed",
+          "named",
+          "spans"
+        ],
+        "count": 20000,
+        "dict_instance_bytes": 320.65,
+        "slotted_instance_bytes": 56.65,
+        "saved_bytes": 264.0,
+        "saved_pct": 82.33
+      }
+    },
+    {
+      "path": "/tmp/corpus/parse/parse/__init__.py",
+      "lineno": 934,
+      "name": "Match",
+      "bases": [
+        "object"
+      ],
+      "attrs": [
+        "match",
+        "parser"
+      ],
+      "status": "safe",
+      "reasons": [],
+      "decorators": [],
+      "layout": {
+        "attrs": [
+          "match",
+          "parser"
+        ],
+        "count": 20000,
+        "dict_instance_bytes": 320.65,
+        "slotted_instance_bytes": 48.65,
+        "saved_bytes": 272.0,
+        "saved_pct": 84.83
+      }
+    },
+    {
+      "path": "/tmp/corpus/parse/parse/__init__.py",
+      "lineno": 950,
+      "name": "ResultIterator",
+      "bases": [
+        "object"
+      ],
+      "attrs": [
+        "endpos",
+        "evaluate_result",
+        "parser",
+        "pos",
+        "string"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "__next__() assigns self.pos outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/parse/tests/test_parse.py",
+      "lineno": 492,
+      "name": "FrozenDatetime",
+      "bases": [
+        "datetime"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from datetime: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/examples/dataclasses_example.py",
+      "lineno": 32,
+      "name": "Person",
+      "bases": [],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "dataclass: needs slots=True, not a plain __slots__ edit",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": [
+        "dataclass"
+      ]
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/examples/dataclasses_example.py",
+      "lineno": 62,
+      "name": "User",
+      "bases": [],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "dataclass: needs slots=True, not a plain __slots__ edit",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": [
+        "dataclass"
+      ]
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/examples/dataclasses_example.py",
+      "lineno": 117,
+      "name": "Address",
+      "bases": [],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "dataclass: needs slots=True, not a plain __slots__ edit",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": [
+        "dataclass"
+      ]
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/examples/dataclasses_example.py",
+      "lineno": 124,
+      "name": "Person",
+      "bases": [],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "dataclass: needs slots=True, not a plain __slots__ edit",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": [
+        "dataclass"
+      ]
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/examples/dataclasses_example.py",
+      "lineno": 169,
+      "name": "Project",
+      "bases": [],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "dataclass: needs slots=True, not a plain __slots__ edit",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": [
+        "dataclass"
+      ]
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/examples/dataclasses_example.py",
+      "lineno": 219,
+      "name": "Product",
+      "bases": [],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "dataclass: needs slots=True, not a plain __slots__ edit",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": [
+        "dataclass"
+      ]
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/examples/dataclasses_example.py",
+      "lineno": 259,
+      "name": "DataclassExample",
+      "bases": [],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "dataclass: needs slots=True, not a plain __slots__ edit",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": [
+        "dataclass"
+      ]
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/examples/dataclasses_example.py",
+      "lineno": 263,
+      "name": "RegularClass",
+      "bases": [],
+      "attrs": [
+        "field1",
+        "field2"
+      ],
+      "status": "safe",
+      "reasons": [],
+      "decorators": [],
+      "layout": {
+        "attrs": [
+          "field1",
+          "field2"
+        ],
+        "count": 20000,
+        "dict_instance_bytes": 320.65,
+        "slotted_instance_bytes": 48.65,
+        "saved_bytes": 272.0,
+        "saved_pct": 84.83
+      }
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/examples/dataclasses_example.py",
+      "lineno": 287,
+      "name": "APIConfig",
+      "bases": [],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "dataclass: needs slots=True, not a plain __slots__ edit",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": [
+        "dataclass"
+      ]
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/dataclasses_support.py",
+      "lineno": 245,
+      "name": "DataclassSchema",
+      "bases": [
+        "Schema"
+      ],
+      "attrs": [
+        "additional_constraints",
+        "dataclass_type"
+      ],
+      "status": "review",
+      "reasons": [
+        "inherits from Schema: base layout must be checked"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/error.py",
+      "lineno": 9,
+      "name": "Error",
+      "bases": [
+        "Exception"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Exception: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/error.py",
+      "lineno": 13,
+      "name": "SchemaError",
+      "bases": [
+        "Error"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Error: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/error.py",
+      "lineno": 17,
+      "name": "Invalid",
+      "bases": [
+        "Error"
+      ],
+      "attrs": [
+        "_error_message",
+        "_path",
+        "error_type"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "inherits from Error: base layout must be checked",
+        "prepend() assigns self._path outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/error.py",
+      "lineno": 68,
+      "name": "MultipleInvalid",
+      "bases": [
+        "Invalid"
+      ],
+      "attrs": [
+        "errors"
+      ],
+      "status": "review",
+      "reasons": [
+        "inherits from Invalid: base layout must be checked"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/error.py",
+      "lineno": 98,
+      "name": "RequiredFieldInvalid",
+      "bases": [
+        "Invalid"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Invalid: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/error.py",
+      "lineno": 102,
+      "name": "ObjectInvalid",
+      "bases": [
+        "Invalid"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Invalid: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/error.py",
+      "lineno": 106,
+      "name": "DictInvalid",
+      "bases": [
+        "Invalid"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Invalid: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/error.py",
+      "lineno": 110,
+      "name": "ExclusiveInvalid",
+      "bases": [
+        "Invalid"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Invalid: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/error.py",
+      "lineno": 114,
+      "name": "InclusiveInvalid",
+      "bases": [
+        "Invalid"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Invalid: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/error.py",
+      "lineno": 118,
+      "name": "SequenceTypeInvalid",
+      "bases": [
+        "Invalid"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Invalid: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/error.py",
+      "lineno": 122,
+      "name": "TypeInvalid",
+      "bases": [
+        "Invalid"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Invalid: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/error.py",
+      "lineno": 126,
+      "name": "ValueInvalid",
+      "bases": [
+        "Invalid"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Invalid: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/error.py",
+      "lineno": 130,
+      "name": "ContainsInvalid",
+      "bases": [
+        "Invalid"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Invalid: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/error.py",
+      "lineno": 134,
+      "name": "ScalarInvalid",
+      "bases": [
+        "Invalid"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Invalid: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/error.py",
+      "lineno": 138,
+      "name": "CoerceInvalid",
+      "bases": [
+        "Invalid"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Invalid: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/error.py",
+      "lineno": 142,
+      "name": "AnyInvalid",
+      "bases": [
+        "Invalid"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Invalid: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/error.py",
+      "lineno": 146,
+      "name": "AllInvalid",
+      "bases": [
+        "Invalid"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Invalid: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/error.py",
+      "lineno": 150,
+      "name": "MatchInvalid",
+      "bases": [
+        "Invalid"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Invalid: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/error.py",
+      "lineno": 154,
+      "name": "RangeInvalid",
+      "bases": [
+        "Invalid"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Invalid: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/error.py",
+      "lineno": 158,
+      "name": "TrueInvalid",
+      "bases": [
+        "Invalid"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Invalid: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/error.py",
+      "lineno": 162,
+      "name": "FalseInvalid",
+      "bases": [
+        "Invalid"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Invalid: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/error.py",
+      "lineno": 166,
+      "name": "BooleanInvalid",
+      "bases": [
+        "Invalid"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Invalid: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/error.py",
+      "lineno": 170,
+      "name": "UrlInvalid",
+      "bases": [
+        "Invalid"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Invalid: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/error.py",
+      "lineno": 174,
+      "name": "EmailInvalid",
+      "bases": [
+        "Invalid"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Invalid: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/error.py",
+      "lineno": 178,
+      "name": "FileInvalid",
+      "bases": [
+        "Invalid"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Invalid: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/error.py",
+      "lineno": 182,
+      "name": "DirInvalid",
+      "bases": [
+        "Invalid"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Invalid: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/error.py",
+      "lineno": 186,
+      "name": "PathInvalid",
+      "bases": [
+        "Invalid"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Invalid: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/error.py",
+      "lineno": 190,
+      "name": "LiteralInvalid",
+      "bases": [
+        "Invalid"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Invalid: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/error.py",
+      "lineno": 194,
+      "name": "LengthInvalid",
+      "bases": [
+        "Invalid"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Invalid: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/error.py",
+      "lineno": 198,
+      "name": "DatetimeInvalid",
+      "bases": [
+        "Invalid"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Invalid: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/error.py",
+      "lineno": 202,
+      "name": "DateInvalid",
+      "bases": [
+        "Invalid"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Invalid: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/error.py",
+      "lineno": 206,
+      "name": "InInvalid",
+      "bases": [
+        "Invalid"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Invalid: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/error.py",
+      "lineno": 210,
+      "name": "NotInInvalid",
+      "bases": [
+        "Invalid"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Invalid: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/error.py",
+      "lineno": 214,
+      "name": "ExactSequenceInvalid",
+      "bases": [
+        "Invalid"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Invalid: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/error.py",
+      "lineno": 218,
+      "name": "NotEnoughValid",
+      "bases": [
+        "Invalid"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Invalid: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/error.py",
+      "lineno": 224,
+      "name": "TooManyValid",
+      "bases": [
+        "Invalid"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Invalid: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/schema_builder.py",
+      "lineno": 27,
+      "name": "Undefined",
+      "bases": [
+        "object"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/schema_builder.py",
+      "lineno": 88,
+      "name": "Schema",
+      "bases": [
+        "object"
+      ],
+      "attrs": [
+        "_compiled",
+        "extra",
+        "required",
+        "schema"
+      ],
+      "status": "safe",
+      "reasons": [],
+      "decorators": [],
+      "layout": {
+        "attrs": [
+          "_compiled",
+          "extra",
+          "required",
+          "schema"
+        ],
+        "count": 20000,
+        "dict_instance_bytes": 320.65,
+        "slotted_instance_bytes": 64.65,
+        "saved_bytes": 256.0,
+        "saved_pct": 79.84
+      }
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/schema_builder.py",
+      "lineno": 964,
+      "name": "Msg",
+      "bases": [
+        "object"
+      ],
+      "attrs": [
+        "_schema",
+        "cls",
+        "msg",
+        "schema"
+      ],
+      "status": "safe",
+      "reasons": [],
+      "decorators": [],
+      "layout": {
+        "attrs": [
+          "_schema",
+          "cls",
+          "msg",
+          "schema"
+        ],
+        "count": 20000,
+        "dict_instance_bytes": 320.65,
+        "slotted_instance_bytes": 64.65,
+        "saved_bytes": 256.0,
+        "saved_pct": 79.84
+      }
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/schema_builder.py",
+      "lineno": 1021,
+      "name": "Object",
+      "bases": [
+        "dict"
+      ],
+      "attrs": [
+        "cls"
+      ],
+      "status": "review",
+      "reasons": [
+        "inherits from dict: base layout must be checked"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/schema_builder.py",
+      "lineno": 1029,
+      "name": "VirtualPathComponent",
+      "bases": [
+        "str"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from str: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/schema_builder.py",
+      "lineno": 1037,
+      "name": "Marker",
+      "bases": [
+        "object"
+      ],
+      "attrs": [],
+      "status": "already-slotted",
+      "reasons": [
+        "class already declares __slots__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/schema_builder.py",
+      "lineno": 1084,
+      "name": "Optional",
+      "bases": [
+        "Marker"
+      ],
+      "attrs": [
+        "default"
+      ],
+      "status": "review",
+      "reasons": [
+        "inherits from Marker: base layout must be checked"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/schema_builder.py",
+      "lineno": 1118,
+      "name": "Exclusive",
+      "bases": [
+        "Optional"
+      ],
+      "attrs": [
+        "group_of_exclusion"
+      ],
+      "status": "review",
+      "reasons": [
+        "inherits from Optional: base layout must be checked"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/schema_builder.py",
+      "lineno": 1165,
+      "name": "Inclusive",
+      "bases": [
+        "Optional"
+      ],
+      "attrs": [
+        "group_of_inclusion"
+      ],
+      "status": "review",
+      "reasons": [
+        "inherits from Optional: base layout must be checked"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/schema_builder.py",
+      "lineno": 1221,
+      "name": "Required",
+      "bases": [
+        "Marker"
+      ],
+      "attrs": [
+        "candidate_keys",
+        "default",
+        "is_complex_key"
+      ],
+      "status": "review",
+      "reasons": [
+        "inherits from Marker: base layout must be checked"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/schema_builder.py",
+      "lineno": 1283,
+      "name": "Remove",
+      "bases": [
+        "Marker"
+      ],
+      "attrs": [
+        "__hash__"
+      ],
+      "status": "review",
+      "reasons": [
+        "inherits from Marker: base layout must be checked"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/tests/test_dataclasses.py",
+      "lineno": 24,
+      "name": "TestDataclassDetection",
+      "bases": [],
+      "attrs": [],
+      "status": "unsafe",
+      "reasons": [
+        "no __init__() to derive a fixed attribute set from",
+        "test_is_dataclass_with_regular_class() assigns self.age outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/tests/test_dataclasses.py",
+      "lineno": 57,
+      "name": "TestBasicDataclassSchema",
+      "bases": [],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/tests/test_dataclasses.py",
+      "lineno": 153,
+      "name": "TestDataclassSchemaWithConstraints",
+      "bases": [],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/tests/test_dataclasses.py",
+      "lineno": 252,
+      "name": "TestCreateDataclassSchemaFunction",
+      "bases": [],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/tests/test_dataclasses.py",
+      "lineno": 308,
+      "name": "TestComplexDataclassSchemas",
+      "bases": [],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/tests/test_dataclasses.py",
+      "lineno": 388,
+      "name": "TestErrorCases",
+      "bases": [],
+      "attrs": [],
+      "status": "unsafe",
+      "reasons": [
+        "no __init__() to derive a fixed attribute set from",
+        "test_non_dataclass_error() assigns self.name outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/tests/test_dataclasses.py",
+      "lineno": 416,
+      "name": "TestBackwardCompatibility",
+      "bases": [],
+      "attrs": [],
+      "status": "unsafe",
+      "reasons": [
+        "no __init__() to derive a fixed attribute set from",
+        "test_object_validator_still_works() assigns self.age outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/tests/test_dataclasses.py",
+      "lineno": 31,
+      "name": "Person",
+      "bases": [],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "dataclass: needs slots=True, not a plain __slots__ edit",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": [
+        "dataclass"
+      ]
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/tests/test_dataclasses.py",
+      "lineno": 41,
+      "name": "Person",
+      "bases": [],
+      "attrs": [
+        "age",
+        "name"
+      ],
+      "status": "safe",
+      "reasons": [],
+      "decorators": [],
+      "layout": {
+        "attrs": [
+          "age",
+          "name"
+        ],
+        "count": 20000,
+        "dict_instance_bytes": 320.65,
+        "slotted_instance_bytes": 48.65,
+        "saved_bytes": 272.0,
+        "saved_pct": 84.83
+      }
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/tests/test_dataclasses.py",
+      "lineno": 64,
+      "name": "Person",
+      "bases": [],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "dataclass: needs slots=True, not a plain __slots__ edit",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": [
+        "dataclass"
+      ]
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/tests/test_dataclasses.py",
+      "lineno": 80,
+      "name": "Person",
+      "bases": [],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "dataclass: needs slots=True, not a plain __slots__ edit",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": [
+        "dataclass"
+      ]
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/tests/test_dataclasses.py",
+      "lineno": 103,
+      "name": "Person",
+      "bases": [],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "dataclass: needs slots=True, not a plain __slots__ edit",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": [
+        "dataclass"
+      ]
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/tests/test_dataclasses.py",
+      "lineno": 123,
+      "name": "Person",
+      "bases": [],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "dataclass: needs slots=True, not a plain __slots__ edit",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": [
+        "dataclass"
+      ]
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/tests/test_dataclasses.py",
+      "lineno": 140,
+      "name": "Person",
+      "bases": [],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "dataclass: needs slots=True, not a plain __slots__ edit",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": [
+        "dataclass"
+      ]
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/tests/test_dataclasses.py",
+      "lineno": 160,
+      "name": "Person",
+      "bases": [],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "dataclass: needs slots=True, not a plain __slots__ edit",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": [
+        "dataclass"
+      ]
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/tests/test_dataclasses.py",
+      "lineno": 198,
+      "name": "Product",
+      "bases": [],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "dataclass: needs slots=True, not a plain __slots__ edit",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": [
+        "dataclass"
+      ]
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/tests/test_dataclasses.py",
+      "lineno": 233,
+      "name": "Person",
+      "bases": [],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "dataclass: needs slots=True, not a plain __slots__ edit",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": [
+        "dataclass"
+      ]
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/tests/test_dataclasses.py",
+      "lineno": 259,
+      "name": "Person",
+      "bases": [],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "dataclass: needs slots=True, not a plain __slots__ edit",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": [
+        "dataclass"
+      ]
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/tests/test_dataclasses.py",
+      "lineno": 274,
+      "name": "User",
+      "bases": [],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "dataclass: needs slots=True, not a plain __slots__ edit",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": [
+        "dataclass"
+      ]
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/tests/test_dataclasses.py",
+      "lineno": 315,
+      "name": "Address",
+      "bases": [],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "dataclass: needs slots=True, not a plain __slots__ edit",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": [
+        "dataclass"
+      ]
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/tests/test_dataclasses.py",
+      "lineno": 321,
+      "name": "Person",
+      "bases": [],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "dataclass: needs slots=True, not a plain __slots__ edit",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": [
+        "dataclass"
+      ]
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/tests/test_dataclasses.py",
+      "lineno": 363,
+      "name": "Team",
+      "bases": [],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "dataclass: needs slots=True, not a plain __slots__ edit",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": [
+        "dataclass"
+      ]
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/tests/test_dataclasses.py",
+      "lineno": 394,
+      "name": "RegularClass",
+      "bases": [],
+      "attrs": [
+        "name"
+      ],
+      "status": "safe",
+      "reasons": [],
+      "decorators": [],
+      "layout": {
+        "attrs": [
+          "name"
+        ],
+        "count": 20000,
+        "dict_instance_bytes": 64.83,
+        "slotted_instance_bytes": 40.65,
+        "saved_bytes": 24.18,
+        "saved_pct": 37.3
+      }
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/tests/test_dataclasses.py",
+      "lineno": 408,
+      "name": "Empty",
+      "bases": [],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "dataclass: needs slots=True, not a plain __slots__ edit",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": [
+        "dataclass"
+      ]
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/tests/test_dataclasses.py",
+      "lineno": 433,
+      "name": "Person",
+      "bases": [],
+      "attrs": [
+        "age",
+        "name"
+      ],
+      "status": "safe",
+      "reasons": [],
+      "decorators": [],
+      "layout": {
+        "attrs": [
+          "age",
+          "name"
+        ],
+        "count": 20000,
+        "dict_instance_bytes": 320.65,
+        "slotted_instance_bytes": 48.65,
+        "saved_bytes": 272.0,
+        "saved_pct": 84.83
+      }
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/tests/tests.py",
+      "lineno": 2569,
+      "name": "MyValueClass",
+      "bases": [
+        "object"
+      ],
+      "attrs": [
+        "value"
+      ],
+      "status": "safe",
+      "reasons": [],
+      "decorators": [],
+      "layout": {
+        "attrs": [
+          "value"
+        ],
+        "count": 20000,
+        "dict_instance_bytes": 64.83,
+        "slotted_instance_bytes": 40.65,
+        "saved_bytes": 24.18,
+        "saved_pct": 37.3
+      }
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/tests/tests.py",
+      "lineno": 152,
+      "name": "FakeTranslations",
+      "bases": [],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/tests/tests.py",
+      "lineno": 190,
+      "name": "FakeTranslations",
+      "bases": [],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/tests/tests.py",
+      "lineno": 775,
+      "name": "C1",
+      "bases": [],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/tests/tests.py",
+      "lineno": 1099,
+      "name": "S",
+      "bases": [
+        "Schema"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Schema: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/tests/tests.py",
+      "lineno": 1114,
+      "name": "S",
+      "bases": [
+        "Schema"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Schema: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/tests/tests.py",
+      "lineno": 1311,
+      "name": "MyObject",
+      "bases": [
+        "object"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/tests/tests.py",
+      "lineno": 1876,
+      "name": "CounterMarker",
+      "bases": [
+        "Marker"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Marker: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/tests/tests.py",
+      "lineno": 2101,
+      "name": "HashableObjectWhichWillBeKeyInDict",
+      "bases": [],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/tests/tests.py",
+      "lineno": 2521,
+      "name": "Choice",
+      "bases": [
+        "Enum"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Enum: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/tests/tests.py",
+      "lineno": 2526,
+      "name": "StringChoice",
+      "bases": [
+        "str",
+        "Enum"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from str: base layout must be checked",
+        "inherits from Enum: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/tests/tests.py",
+      "lineno": 2549,
+      "name": "Choice",
+      "bases": [
+        "Enum"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Enum: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/tests/tests.py",
+      "lineno": 2553,
+      "name": "StringChoice",
+      "bases": [
+        "str",
+        "Enum"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from str: base layout must be checked",
+        "inherits from Enum: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/tests/tests.py",
+      "lineno": 2895,
+      "name": "Record",
+      "bases": [],
+      "attrs": [],
+      "status": "unsafe",
+      "reasons": [
+        "dataclass: needs slots=True, not a plain __slots__ edit",
+        "no __init__() to derive a fixed attribute set from",
+        "__post_init__() assigns self.computed outside __init__"
+      ],
+      "decorators": [
+        "dataclass"
+      ]
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/tests/tests.py",
+      "lineno": 2923,
+      "name": "Record",
+      "bases": [],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "dataclass: needs slots=True, not a plain __slots__ edit",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": [
+        "dataclass()"
+      ]
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/tests/tests.py",
+      "lineno": 2943,
+      "name": "Base",
+      "bases": [],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "dataclass: needs slots=True, not a plain __slots__ edit",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": [
+        "dataclass"
+      ]
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/tests/tests.py",
+      "lineno": 2947,
+      "name": "Record",
+      "bases": [
+        "Base"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "dataclass: needs slots=True, not a plain __slots__ edit",
+        "inherits from Base: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": [
+        "dataclass"
+      ]
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/tests/tests.py",
+      "lineno": 2967,
+      "name": "Record",
+      "bases": [],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "dataclass: needs slots=True, not a plain __slots__ edit",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": [
+        "dataclass"
+      ]
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/util.py",
+      "lineno": 66,
+      "name": "DefaultTo",
+      "bases": [
+        "object"
+      ],
+      "attrs": [
+        "default_value",
+        "msg"
+      ],
+      "status": "safe",
+      "reasons": [],
+      "decorators": [],
+      "layout": {
+        "attrs": [
+          "default_value",
+          "msg"
+        ],
+        "count": 20000,
+        "dict_instance_bytes": 320.65,
+        "slotted_instance_bytes": 48.65,
+        "saved_bytes": 272.0,
+        "saved_pct": 84.83
+      }
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/util.py",
+      "lineno": 90,
+      "name": "SetTo",
+      "bases": [
+        "object"
+      ],
+      "attrs": [
+        "value"
+      ],
+      "status": "safe",
+      "reasons": [],
+      "decorators": [],
+      "layout": {
+        "attrs": [
+          "value"
+        ],
+        "count": 20000,
+        "dict_instance_bytes": 64.83,
+        "slotted_instance_bytes": 40.65,
+        "saved_bytes": 24.18,
+        "saved_pct": 37.3
+      }
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/util.py",
+      "lineno": 110,
+      "name": "Set",
+      "bases": [
+        "object"
+      ],
+      "attrs": [
+        "msg"
+      ],
+      "status": "safe",
+      "reasons": [],
+      "decorators": [],
+      "layout": {
+        "attrs": [
+          "msg"
+        ],
+        "count": 20000,
+        "dict_instance_bytes": 64.83,
+        "slotted_instance_bytes": 40.65,
+        "saved_bytes": 24.18,
+        "saved_pct": 37.3
+      }
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/util.py",
+      "lineno": 138,
+      "name": "Literal",
+      "bases": [
+        "object"
+      ],
+      "attrs": [
+        "lit"
+      ],
+      "status": "safe",
+      "reasons": [],
+      "decorators": [],
+      "layout": {
+        "attrs": [
+          "lit"
+        ],
+        "count": 20000,
+        "dict_instance_bytes": 64.83,
+        "slotted_instance_bytes": 40.65,
+        "saved_bytes": 24.18,
+        "saved_pct": 37.3
+      }
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/validators.py",
+      "lineno": 114,
+      "name": "Coerce",
+      "bases": [
+        "object"
+      ],
+      "attrs": [
+        "msg",
+        "type",
+        "type_name"
+      ],
+      "status": "safe",
+      "reasons": [],
+      "decorators": [],
+      "layout": {
+        "attrs": [
+          "msg",
+          "type",
+          "type_name"
+        ],
+        "count": 20000,
+        "dict_instance_bytes": 320.65,
+        "slotted_instance_bytes": 56.65,
+        "saved_bytes": 264.0,
+        "saved_pct": 82.33
+      }
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/validators.py",
+      "lineno": 239,
+      "name": "_WithSubValidators",
+      "bases": [
+        "object"
+      ],
+      "attrs": [
+        "discriminant",
+        "msg",
+        "required",
+        "validators"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "__init__ accepts **kwargs",
+        "__init__ accepts *validators",
+        "__voluptuous_compile__() assigns self._compiled outside __init__",
+        "_run() assigns self._compiled outside __init__"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/validators.py",
+      "lineno": 293,
+      "name": "Any",
+      "bases": [
+        "_WithSubValidators"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from _WithSubValidators: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/validators.py",
+      "lineno": 339,
+      "name": "Union",
+      "bases": [
+        "_WithSubValidators"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from _WithSubValidators: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/validators.py",
+      "lineno": 381,
+      "name": "All",
+      "bases": [
+        "_WithSubValidators"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from _WithSubValidators: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/validators.py",
+      "lineno": 410,
+      "name": "Match",
+      "bases": [
+        "object"
+      ],
+      "attrs": [
+        "msg",
+        "pattern"
+      ],
+      "status": "safe",
+      "reasons": [],
+      "decorators": [],
+      "layout": {
+        "attrs": [
+          "msg",
+          "pattern"
+        ],
+        "count": 20000,
+        "dict_instance_bytes": 320.65,
+        "slotted_instance_bytes": 48.65,
+        "saved_bytes": 272.0,
+        "saved_pct": 84.83
+      }
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/validators.py",
+      "lineno": 455,
+      "name": "Replace",
+      "bases": [
+        "object"
+      ],
+      "attrs": [
+        "msg",
+        "pattern",
+        "substitution"
+      ],
+      "status": "safe",
+      "reasons": [],
+      "decorators": [],
+      "layout": {
+        "attrs": [
+          "msg",
+          "pattern",
+          "substitution"
+        ],
+        "count": 20000,
+        "dict_instance_bytes": 320.65,
+        "slotted_instance_bytes": 56.65,
+        "saved_bytes": 264.0,
+        "saved_pct": 82.33
+      }
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/validators.py",
+      "lineno": 636,
+      "name": "Range",
+      "bases": [
+        "object"
+      ],
+      "attrs": [
+        "max",
+        "max_included",
+        "min",
+        "min_included",
+        "msg"
+      ],
+      "status": "safe",
+      "reasons": [],
+      "decorators": [],
+      "layout": {
+        "attrs": [
+          "max",
+          "max_included",
+          "min",
+          "min_included",
+          "msg"
+        ],
+        "count": 20000,
+        "dict_instance_bytes": 320.65,
+        "slotted_instance_bytes": 72.65,
+        "saved_bytes": 248.0,
+        "saved_pct": 77.34
+      }
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/validators.py",
+      "lineno": 713,
+      "name": "Clamp",
+      "bases": [
+        "object"
+      ],
+      "attrs": [
+        "max",
+        "min",
+        "msg"
+      ],
+      "status": "safe",
+      "reasons": [],
+      "decorators": [],
+      "layout": {
+        "attrs": [
+          "max",
+          "min",
+          "msg"
+        ],
+        "count": 20000,
+        "dict_instance_bytes": 320.65,
+        "slotted_instance_bytes": 56.65,
+        "saved_bytes": 264.0,
+        "saved_pct": 82.33
+      }
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/validators.py",
+      "lineno": 756,
+      "name": "Length",
+      "bases": [
+        "object"
+      ],
+      "attrs": [
+        "max",
+        "min",
+        "msg"
+      ],
+      "status": "safe",
+      "reasons": [],
+      "decorators": [],
+      "layout": {
+        "attrs": [
+          "max",
+          "min",
+          "msg"
+        ],
+        "count": 20000,
+        "dict_instance_bytes": 320.65,
+        "slotted_instance_bytes": 56.65,
+        "saved_bytes": 264.0,
+        "saved_pct": 82.33
+      }
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/validators.py",
+      "lineno": 790,
+      "name": "Datetime",
+      "bases": [
+        "object"
+      ],
+      "attrs": [
+        "format",
+        "msg"
+      ],
+      "status": "safe",
+      "reasons": [],
+      "decorators": [],
+      "layout": {
+        "attrs": [
+          "format",
+          "msg"
+        ],
+        "count": 20000,
+        "dict_instance_bytes": 320.65,
+        "slotted_instance_bytes": 48.65,
+        "saved_bytes": 272.0,
+        "saved_pct": 84.83
+      }
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/validators.py",
+      "lineno": 815,
+      "name": "Date",
+      "bases": [
+        "Datetime"
+      ],
+      "attrs": [],
+      "status": "review",
+      "reasons": [
+        "inherits from Datetime: base layout must be checked",
+        "no __init__() to derive a fixed attribute set from"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/validators.py",
+      "lineno": 834,
+      "name": "In",
+      "bases": [
+        "object"
+      ],
+      "attrs": [
+        "container",
+        "msg"
+      ],
+      "status": "safe",
+      "reasons": [],
+      "decorators": [],
+      "layout": {
+        "attrs": [
+          "container",
+          "msg"
+        ],
+        "count": 20000,
+        "dict_instance_bytes": 320.65,
+        "slotted_instance_bytes": 48.65,
+        "saved_bytes": 272.0,
+        "saved_pct": 84.83
+      }
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/validators.py",
+      "lineno": 868,
+      "name": "NotIn",
+      "bases": [
+        "object"
+      ],
+      "attrs": [
+        "container",
+        "msg"
+      ],
+      "status": "safe",
+      "reasons": [],
+      "decorators": [],
+      "layout": {
+        "attrs": [
+          "container",
+          "msg"
+        ],
+        "count": 20000,
+        "dict_instance_bytes": 320.65,
+        "slotted_instance_bytes": 48.65,
+        "saved_bytes": 272.0,
+        "saved_pct": 84.83
+      }
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/validators.py",
+      "lineno": 901,
+      "name": "Contains",
+      "bases": [
+        "object"
+      ],
+      "attrs": [
+        "item",
+        "msg"
+      ],
+      "status": "safe",
+      "reasons": [],
+      "decorators": [],
+      "layout": {
+        "attrs": [
+          "item",
+          "msg"
+        ],
+        "count": 20000,
+        "dict_instance_bytes": 320.65,
+        "slotted_instance_bytes": 48.65,
+        "saved_bytes": 272.0,
+        "saved_pct": 84.83
+      }
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/validators.py",
+      "lineno": 928,
+      "name": "ExactSequence",
+      "bases": [
+        "object"
+      ],
+      "attrs": [
+        "_schemas",
+        "msg",
+        "validators"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "__init__ accepts **kwargs"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/validators.py",
+      "lineno": 967,
+      "name": "Unique",
+      "bases": [
+        "object"
+      ],
+      "attrs": [
+        "msg"
+      ],
+      "status": "safe",
+      "reasons": [],
+      "decorators": [],
+      "layout": {
+        "attrs": [
+          "msg"
+        ],
+        "count": 20000,
+        "dict_instance_bytes": 64.83,
+        "slotted_instance_bytes": 40.65,
+        "saved_bytes": 24.18,
+        "saved_pct": 37.3
+      }
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/validators.py",
+      "lineno": 1015,
+      "name": "Equal",
+      "bases": [
+        "object"
+      ],
+      "attrs": [
+        "msg",
+        "target"
+      ],
+      "status": "safe",
+      "reasons": [],
+      "decorators": [],
+      "layout": {
+        "attrs": [
+          "msg",
+          "target"
+        ],
+        "count": 20000,
+        "dict_instance_bytes": 320.65,
+        "slotted_instance_bytes": 48.65,
+        "saved_bytes": 272.0,
+        "saved_pct": 84.83
+      }
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/validators.py",
+      "lineno": 1049,
+      "name": "Unordered",
+      "bases": [
+        "object"
+      ],
+      "attrs": [
+        "_schemas",
+        "msg",
+        "validators"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "__init__ accepts **kwargs"
+      ],
+      "decorators": []
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/validators.py",
+      "lineno": 1130,
+      "name": "Number",
+      "bases": [
+        "object"
+      ],
+      "attrs": [
+        "msg",
+        "precision",
+        "scale",
+        "yield_decimal"
+      ],
+      "status": "safe",
+      "reasons": [],
+      "decorators": [],
+      "layout": {
+        "attrs": [
+          "msg",
+          "precision",
+          "scale",
+          "yield_decimal"
+        ],
+        "count": 20000,
+        "dict_instance_bytes": 320.65,
+        "slotted_instance_bytes": 64.65,
+        "saved_bytes": 256.0,
+        "saved_pct": 79.84
+      }
+    },
+    {
+      "path": "/tmp/corpus/voluptuous/voluptuous/validators.py",
+      "lineno": 1223,
+      "name": "SomeOf",
+      "bases": [
+        "_WithSubValidators"
+      ],
+      "attrs": [
+        "max_valid",
+        "min_valid"
+      ],
+      "status": "unsafe",
+      "reasons": [
+        "inherits from _WithSubValidators: base layout must be checked",
+        "__init__ accepts **kwargs"
+      ],
+      "decorators": []
+    }
+  ]
+}
